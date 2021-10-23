@@ -3,29 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F40BCDBD79845B9ABEE809A /* Pods_BusinessCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */; };
 		F92830E02724A5650034B682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92830DF2724A5650034B682 /* AppDelegate.swift */; };
 		F92830E22724A5650034B682 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92830E12724A5650034B682 /* SceneDelegate.swift */; };
-		F92830E42724A5650034B682 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92830E32724A5650034B682 /* ViewController.swift */; };
+		F92830E42724A5650034B682 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92830E32724A5650034B682 /* LoginPageViewController.swift */; };
 		F92830E72724A5650034B682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F92830E52724A5650034B682 /* Main.storyboard */; };
 		F92830EA2724A5650034B682 /* BusinessCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F92830E82724A5650034B682 /* BusinessCard.xcdatamodeld */; };
 		F92830EC2724A5670034B682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F92830EB2724A5670034B682 /* Assets.xcassets */; };
 		F92830EF2724A5670034B682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F92830ED2724A5670034B682 /* LaunchScreen.storyboard */; };
+		F938335C2724BA45009AA357 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F938335B2724BA45009AA357 /* RegisterViewController.swift */; };
+		F97EBD5C2724B21000F1AEAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F97EBD5B2724B21000F1AEAA /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01835C18B17E99AA96B90D8D /* Pods-BusinessCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCard.release.xcconfig"; path = "Target Support Files/Pods-BusinessCard/Pods-BusinessCard.release.xcconfig"; sourceTree = "<group>"; };
+		BFFF18734AA1278C35B687CB /* Pods-BusinessCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCard.debug.xcconfig"; path = "Target Support Files/Pods-BusinessCard/Pods-BusinessCard.debug.xcconfig"; sourceTree = "<group>"; };
+		C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92830DC2724A5650034B682 /* BusinessCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusinessCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92830DF2724A5650034B682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F92830E12724A5650034B682 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F92830E32724A5650034B682 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F92830E32724A5650034B682 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
 		F92830E62724A5650034B682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F92830E92724A5650034B682 /* BusinessCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusinessCard.xcdatamodel; sourceTree = "<group>"; };
 		F92830EB2724A5670034B682 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F92830EE2724A5670034B682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F92830F02724A5670034B682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F938335B2724BA45009AA357 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F97EBD5B2724B21000F1AEAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F40BCDBD79845B9ABEE809A /* Pods_BusinessCard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D9E39ACAD820DD99146A14C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BFFF18734AA1278C35B687CB /* Pods-BusinessCard.debug.xcconfig */,
+				01835C18B17E99AA96B90D8D /* Pods-BusinessCard.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7C6994DF12FE1FF6A6EAC840 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F92830D32724A5650034B682 = {
 			isa = PBXGroup;
 			children = (
 				F92830DE2724A5650034B682 /* BusinessCard */,
 				F92830DD2724A5650034B682 /* Products */,
+				5D9E39ACAD820DD99146A14C /* Pods */,
+				7C6994DF12FE1FF6A6EAC840 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,14 +88,24 @@
 			children = (
 				F92830DF2724A5650034B682 /* AppDelegate.swift */,
 				F92830E12724A5650034B682 /* SceneDelegate.swift */,
-				F92830E32724A5650034B682 /* ViewController.swift */,
+				F938335E2724BA6D009AA357 /* ViewControllers */,
 				F92830E52724A5650034B682 /* Main.storyboard */,
 				F92830EB2724A5670034B682 /* Assets.xcassets */,
 				F92830ED2724A5670034B682 /* LaunchScreen.storyboard */,
 				F92830F02724A5670034B682 /* Info.plist */,
 				F92830E82724A5650034B682 /* BusinessCard.xcdatamodeld */,
+				F97EBD5B2724B21000F1AEAA /* GoogleService-Info.plist */,
 			);
 			path = BusinessCard;
+			sourceTree = "<group>";
+		};
+		F938335E2724BA6D009AA357 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F92830E32724A5650034B682 /* LoginPageViewController.swift */,
+				F938335B2724BA45009AA357 /* RegisterViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +115,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F92830F32724A5670034B682 /* Build configuration list for PBXNativeTarget "BusinessCard" */;
 			buildPhases = (
+				96C840B3F18727A8150F3B23 /* [CP] Check Pods Manifest.lock */,
 				F92830D82724A5650034B682 /* Sources */,
 				F92830D92724A5650034B682 /* Frameworks */,
 				F92830DA2724A5650034B682 /* Resources */,
+				A1F9FC5C9E6F1BA35F540FBE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F92830EF2724A5670034B682 /* LaunchScreen.storyboard in Resources */,
+				F97EBD5C2724B21000F1AEAA /* GoogleService-Info.plist in Resources */,
 				F92830EC2724A5670034B682 /* Assets.xcassets in Resources */,
 				F92830E72724A5650034B682 /* Main.storyboard in Resources */,
 			);
@@ -135,12 +176,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		96C840B3F18727A8150F3B23 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BusinessCard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A1F9FC5C9E6F1BA35F540FBE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BusinessCard/Pods-BusinessCard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BusinessCard/Pods-BusinessCard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BusinessCard/Pods-BusinessCard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F92830D82724A5650034B682 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F92830E42724A5650034B682 /* ViewController.swift in Sources */,
+				F92830E42724A5650034B682 /* LoginPageViewController.swift in Sources */,
+				F938335C2724BA45009AA357 /* RegisterViewController.swift in Sources */,
 				F92830E02724A5650034B682 /* AppDelegate.swift in Sources */,
 				F92830E22724A5650034B682 /* SceneDelegate.swift in Sources */,
 				F92830EA2724A5650034B682 /* BusinessCard.xcdatamodeld in Sources */,
@@ -287,6 +371,7 @@
 		};
 		F92830F42724A5670034B682 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFFF18734AA1278C35B687CB /* Pods-BusinessCard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -305,6 +390,7 @@
 		};
 		F92830F52724A5670034B682 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01835C18B17E99AA96B90D8D /* Pods-BusinessCard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
