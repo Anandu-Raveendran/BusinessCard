@@ -2,18 +2,62 @@
 //  ViewController.swift
 //  BusinessCard
 //
-//  Created by Nandu on 2021-10-23.
 //
 
 import UIKit
+import Firebase
 
 class LoginPageViewController: UIViewController {
+    
+    @IBOutlet weak var errorText: UILabel!
+    @IBOutlet weak var emailText: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
+    
+    @IBAction func loginBtn(_ sender: Any) {
+        var errorMessage = ""
+        
+        guard let email = emailText.text else {
+            errorMessage += " Email field is empty"
+            errorText.text = errorMessage
+            return
+        }
+        
+        guard let pass = password.text else {
+            errorMessage += " Password is empty"
+            errorText.text = errorMessage
+            return
+        }
+        
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: pass, completion: { [weak self] result, error in
 
+            guard let strongSelf = self else {return}
+
+            if( error != nil) {
+                print("User Not found")
+                strongSelf.errorText.text = "User not found"
+                strongSelf.performSegue(withIdentifier: "registerSegue", sender: nil)
+                return
+            }
+            
+            print("\(email) Login success")
+            strongSelf.errorText.text = "Login success"
+            
+            strongSelf.performSegue(withIdentifier: "loginToHome", sender: nil)
+        })
+    }
+    
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if(FirebaseAuth.Auth.auth().currentUser != nil) {
+            performSegue(withIdentifier: "loginToHome", sender: nil)
+        }
     }
-
-
+    
+    
 }
 
