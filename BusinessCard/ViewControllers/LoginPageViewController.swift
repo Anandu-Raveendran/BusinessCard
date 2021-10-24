@@ -36,7 +36,6 @@ class LoginPageViewController: UIViewController {
             if( error != nil) {
                 print("User Not found")
                 strongSelf.errorText.text = "User not found"
-                strongSelf.performSegue(withIdentifier: "registerSegue", sender: nil)
                 return
             }
             
