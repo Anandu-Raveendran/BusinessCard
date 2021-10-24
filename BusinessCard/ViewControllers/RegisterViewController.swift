@@ -63,7 +63,7 @@ class RegisterViewController: UIViewController {
                 
                 print("\(email) Signed in")
                 strongSelf.errorField.text = "Account created"
-                strongSelf.performSegue(withIdentifier: "regToHome", sender: nil)
+                AppManager.shared.showApp(caller: strongSelf)
             })
         } else{
             errorField.text = errorMessage
@@ -75,9 +75,6 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(FirebaseAuth.Auth.auth().currentUser != nil) {
-            performSegue(withIdentifier: "regToHome", sender: nil)
-        }
     }
     
     

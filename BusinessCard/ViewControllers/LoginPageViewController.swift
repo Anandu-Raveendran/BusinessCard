@@ -30,9 +30,9 @@ class LoginPageViewController: UIViewController {
         }
         
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: pass, completion: { [weak self] result, error in
-
+            
             guard let strongSelf = self else {return}
-
+            
             if( error != nil) {
                 print("User Not found")
                 strongSelf.errorText.text = "User not found"
@@ -42,19 +42,27 @@ class LoginPageViewController: UIViewController {
             print("\(email) Login success")
             strongSelf.errorText.text = "Login success"
             
-            strongSelf.performSegue(withIdentifier: "loginToHome", sender: nil)
+            strongSelf.dismiss(animated: true, completion: nil)
+            
         })
     }
     
     
-   
+    override func viewWillDisappear(_ animated: Bool) {
+       
+        super.viewWillDisappear(true)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        if(FirebaseAuth.Auth.auth().currentUser == nil) {
+            performSegue(withIdentifier: "guestSegue", sender: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
-        if(FirebaseAuth.Auth.auth().currentUser != nil) {
-            performSegue(withIdentifier: "loginToHome", sender: nil)
-        }
+        
     }
     
     
