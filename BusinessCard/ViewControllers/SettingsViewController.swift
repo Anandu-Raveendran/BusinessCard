@@ -10,10 +10,12 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBAction func logoutBtn(_ sender: Any) {
-        AppManager.shared.logout(caller: self)
-    }
-    override func viewDidLoad() {
         super.viewDidLoad()
+
+        print("Logout from settings")
+        AppManager.shared.logout()
+        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
 
         // Do any additional setup after loading the view.
     }

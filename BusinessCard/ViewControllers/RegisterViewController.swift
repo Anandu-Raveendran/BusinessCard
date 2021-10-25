@@ -30,20 +30,27 @@ class RegisterViewController: UIViewController {
         
         var errorMessage = ""
         
-        guard let email = emailIdField.text else {
+        guard let email = emailIdField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             errorMessage += " Email field is empty"
             errorField.text = errorMessage
             return
         }
        
+        if(!RegisterViewController.isEmailValid(email)){
+            errorMessage += " Email ID not valid"
+        }
         
-        guard let pass = passwordField.text else {
+        guard let pass = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             errorMessage += " Password is empty"
             errorField.text = errorMessage
             return
         }
         
-        guard let name = nameField.text else {
+        if(!RegisterViewController.isPasswordValid(pass)){
+            errorMessage += " Password is not strong enough"
+        }
+        
+        guard let name = nameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             errorMessage += " Name is empty"
             errorField.text = errorMessage
             return
@@ -63,7 +70,8 @@ class RegisterViewController: UIViewController {
                 
                 print("\(email) Signed in")
                 strongSelf.errorField.text = "Account created"
-                AppManager.shared.showApp(caller: strongSelf)
+                strongSelf.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+
             })
         } else{
             errorField.text = errorMessage
@@ -71,21 +79,51 @@ class RegisterViewController: UIViewController {
     }
     
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    static func isEmailValid(_ email:String) -> Bool{
+        var returnValue = true
+            let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
+            
+            do {
+                let regex = try NSRegularExpression(pattern: emailRegEx)
+                let nsString = email as NSString
+                let results = regex.matches(in: email, range: NSRange(location: 0, length: nsString.length))
+                
+                if results.count == 0
+                {
+                    returnValue = false
+                }
+                
+            } catch let error as NSError {
+                print("invalid regex: \(error.localizedDescription)")
+                returnValue = false
+            }
+            
+            return  returnValue
+        
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    static func isPasswordValid(_ pass:String) -> Bool{
+
+        let passRegx = "^(?=.*[a-z])(?=.*[$@$#!%*?&]).{6,}$"
+
+        var returnValue = true
+
+        do {
+            let regex = try NSRegularExpression(pattern: passRegx)
+            let nsString = pass as NSString
+            let results = regex.matches(in: pass, range: NSRange(location: 0, length: nsString.length))
+            
+            if results.count == 0
+            {
+                returnValue = false
+            }
+            
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            returnValue = false
+        }
+        
+        return  returnValue
+    }
+
 }
