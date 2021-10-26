@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F40BCDBD79845B9ABEE809A /* Pods_BusinessCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */; };
+		F922C1D22726E89F00A39554 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922C1D12726E89F00A39554 /* ScannerViewController.swift */; };
+		F922C1D52727086700A39554 /* UserDataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922C1D42727086700A39554 /* UserDataDao.swift */; };
 		F92830E02724A5650034B682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92830DF2724A5650034B682 /* AppDelegate.swift */; };
 		F92830E22724A5650034B682 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92830E12724A5650034B682 /* SceneDelegate.swift */; };
 		F92830E42724A5650034B682 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92830E32724A5650034B682 /* LoginPageViewController.swift */; };
@@ -26,6 +28,8 @@
 		01835C18B17E99AA96B90D8D /* Pods-BusinessCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCard.release.xcconfig"; path = "Target Support Files/Pods-BusinessCard/Pods-BusinessCard.release.xcconfig"; sourceTree = "<group>"; };
 		BFFF18734AA1278C35B687CB /* Pods-BusinessCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCard.debug.xcconfig"; path = "Target Support Files/Pods-BusinessCard/Pods-BusinessCard.debug.xcconfig"; sourceTree = "<group>"; };
 		C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F922C1D12726E89F00A39554 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		F922C1D42727086700A39554 /* UserDataDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDao.swift; sourceTree = "<group>"; };
 		F92830DC2724A5650034B682 /* BusinessCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusinessCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92830DF2724A5650034B682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F92830E12724A5650034B682 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				F92830E82724A5650034B682 /* BusinessCard.xcdatamodeld */,
 				F97EBD5B2724B21000F1AEAA /* GoogleService-Info.plist */,
 				F93833672724EAB7009AA357 /* AppManager.swift */,
+				F922C1D42727086700A39554 /* UserDataDao.swift */,
 			);
 			path = BusinessCard;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 				F938335B2724BA45009AA357 /* RegisterViewController.swift */,
 				F93833642724E8F8009AA357 /* HomeViewController.swift */,
 				F938336A2724F135009AA357 /* SettingsViewController.swift */,
+				F922C1D12726E89F00A39554 /* ScannerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -236,6 +242,8 @@
 				F92830E42724A5650034B682 /* LoginPageViewController.swift in Sources */,
 				F938335C2724BA45009AA357 /* RegisterViewController.swift in Sources */,
 				F92830E02724A5650034B682 /* AppDelegate.swift in Sources */,
+				F922C1D22726E89F00A39554 /* ScannerViewController.swift in Sources */,
+				F922C1D52727086700A39554 /* UserDataDao.swift in Sources */,
 				F92830E22724A5650034B682 /* SceneDelegate.swift in Sources */,
 				F92830EA2724A5650034B682 /* BusinessCard.xcdatamodeld in Sources */,
 				F93833652724E8F8009AA357 /* HomeViewController.swift in Sources */,

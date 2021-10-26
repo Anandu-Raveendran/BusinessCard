@@ -6,14 +6,17 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class HomeViewController: UIViewController {
-
-    
+        
     @IBOutlet weak var QRCodeImageView: UIImageView!
-
+    @IBOutlet weak var name: UILabel!
+    
+    @IBOutlet weak var email: UILabel!
+    
     override func viewWillAppear(_ animated: Bool) {
-        AppManager.shared.showApp(caller: self)
+        AppManager.shared.checkLoggedIn(caller: self)
         print("Home view will Appear")
         super.viewWillAppear(true)
     }
@@ -21,10 +24,49 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         print("View did Appear in Home")
         
-        QRCodeImageView.image = generateQRCode(from: "Details not added. But i wanted to see how much of data I could save in it. So I put this super long string over here so that we could see the output in real. I think this is a really good long string")
-        
+        if let uid = AppManager.shared.loggedInUID { // set the logged in used uid as the QR code data
+            QRCodeImageView.image = generateQRCode(from: uid)
+           
+            getUserData(for:uid)
+        }
     }
-
+    
+    func getUserData(for uid:String){
+        AppManager.shared.db = Firestore.firestore()
+        let docRef = AppManager.shared.db.collection("users").document(uid)
+        
+        docRef.getDocument{
+        (document, error) in
+            
+           
+            
+            if let document = document, document.exists {
+                
+                let data = document.data()
+                
+                AppManager.shared.userData?.name = data?["name"] as! String
+                AppManager.shared.userData?.phone = data?["phone"] as! Int
+                AppManager.shared.userData?.job_title = data?["job_title"] as! String
+                AppManager.shared.userData?.company_website = data?["company_website"] as! String
+                AppManager.shared.userData?.linkedIn = data?["linkedIn"] as! String
+                
+                
+                //let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
+                //print("Retrieved data: \(dataDescription)")
+                print("retrieved dict for \(String(describing: AppManager.shared.userData?.name))")
+                self.name.text = AppManager.shared.userData?.name
+                if let emailID = FirebaseAuth.Auth.auth().currentUser?.email {
+                    self.email.text = emailID
+                } else {
+                    AppManager.shared.logout()
+                }
+                
+            } else {
+                print("Document does not exit for uid \(uid)")
+            }
+        }
+    }
+    
     func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
         if let QRFilter = CIFilter(name: "CIQRCodeGenerator") {
@@ -38,5 +80,5 @@ class HomeViewController: UIViewController {
         }
         return nil
     }
-
+    
 }

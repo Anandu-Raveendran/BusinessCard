@@ -42,6 +42,7 @@ class LoginPageViewController: UIViewController {
             print("\(email) Login success")
             strongSelf.errorText.text = "Login success"
             
+            AppManager.shared.loggedInUID = result?.user.uid
             strongSelf.dismiss(animated: true, completion: nil)
             
         })
