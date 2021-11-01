@@ -14,10 +14,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var email: UILabel!
+    var code:String? = nil
     
     override func viewWillAppear(_ animated: Bool) {
         AppManager.shared.checkLoggedIn(caller: self)
         print("Home view will Appear")
+        
         super.viewWillAppear(true)
     }
     
@@ -38,8 +40,7 @@ class HomeViewController: UIViewController {
         docRef.getDocument{
         (document, error) in
             
-           
-            
+                       
             if let document = document, document.exists {
                 
                 let data = document.data()
@@ -81,4 +82,14 @@ class HomeViewController: UIViewController {
         return nil
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toScanner"){
+            let dest = segue.destination as! ScannerViewController
+            dest.callback = QRCodeScannerCallback
+            dest.calledFrom = "HomeViewController"
+        }
+    }
+    func QRCodeScannerCallback(code:String){
+        self.code = code
+    }
 }

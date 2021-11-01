@@ -10,6 +10,9 @@ import UIKit
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    var callback: ((String)->())? = nil
+    var calledFrom:String? = nil
+    var code:String? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,13 +89,29 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             found(code: stringValue)
         }
 
-        dismiss(animated: true)
+        //print("calling dismiss at metaDataOutput")
+        //dismiss(animated: true)
     }
 
     func found(code: String) {
-        print(code)
+        print("QR code found for : \(code)")
+        self.code = code
+        if let callback = callback{
+         callback(code)
+        } else {
+            print("Error: No callback present")
+        }
+        performSegue(withIdentifier: "scannerToDetails", sender: nil)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "scannerToDetails"){
+            let dest = segue.destination as! ContactDetailsViewController
+            dest.code = code
+            dest.calledFrom = calledFrom
+        }
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

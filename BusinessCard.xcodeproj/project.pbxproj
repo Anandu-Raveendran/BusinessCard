@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1438F3272F98D200BE02C3 /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1438F2272F98D200BE02C3 /* ContactDetailsViewController.swift */; };
+		3F1438F5272F9EE300BE02C3 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1438F4272F9EE300BE02C3 /* GuestViewController.swift */; };
+		3F94AD16272CC03B00C89636 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F94AD15272CC03A00C89636 /* GoogleService-Info.plist */; };
 		5F40BCDBD79845B9ABEE809A /* Pods_BusinessCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */; };
 		F922C1D22726E89F00A39554 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922C1D12726E89F00A39554 /* ScannerViewController.swift */; };
 		F922C1D52727086700A39554 /* UserDataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922C1D42727086700A39554 /* UserDataDao.swift */; };
@@ -21,11 +24,13 @@
 		F93833652724E8F8009AA357 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93833642724E8F8009AA357 /* HomeViewController.swift */; };
 		F93833682724EAB7009AA357 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93833672724EAB7009AA357 /* AppManager.swift */; };
 		F938336B2724F135009AA357 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F938336A2724F135009AA357 /* SettingsViewController.swift */; };
-		F97EBD5C2724B21000F1AEAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F97EBD5B2724B21000F1AEAA /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01835C18B17E99AA96B90D8D /* Pods-BusinessCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCard.release.xcconfig"; path = "Target Support Files/Pods-BusinessCard/Pods-BusinessCard.release.xcconfig"; sourceTree = "<group>"; };
+		3F1438F2272F98D200BE02C3 /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
+		3F1438F4272F9EE300BE02C3 /* GuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
+		3F94AD15272CC03A00C89636 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFFF18734AA1278C35B687CB /* Pods-BusinessCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCard.debug.xcconfig"; path = "Target Support Files/Pods-BusinessCard/Pods-BusinessCard.debug.xcconfig"; sourceTree = "<group>"; };
 		C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F922C1D12726E89F00A39554 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +48,6 @@
 		F93833642724E8F8009AA357 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F93833672724EAB7009AA357 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		F938336A2724F135009AA357 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		F97EBD5B2724B21000F1AEAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +108,7 @@
 				F92830ED2724A5670034B682 /* LaunchScreen.storyboard */,
 				F92830F02724A5670034B682 /* Info.plist */,
 				F92830E82724A5650034B682 /* BusinessCard.xcdatamodeld */,
-				F97EBD5B2724B21000F1AEAA /* GoogleService-Info.plist */,
+				3F94AD15272CC03A00C89636 /* GoogleService-Info.plist */,
 				F93833672724EAB7009AA357 /* AppManager.swift */,
 				F922C1D42727086700A39554 /* UserDataDao.swift */,
 			);
@@ -119,6 +123,8 @@
 				F93833642724E8F8009AA357 /* HomeViewController.swift */,
 				F938336A2724F135009AA357 /* SettingsViewController.swift */,
 				F922C1D12726E89F00A39554 /* ScannerViewController.swift */,
+				3F1438F2272F98D200BE02C3 /* ContactDetailsViewController.swift */,
+				3F1438F4272F9EE300BE02C3 /* GuestViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -156,6 +162,7 @@
 				TargetAttributes = {
 					F92830DB2724A5650034B682 = {
 						CreatedOnToolsVersion = 12.1;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -183,7 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F92830EF2724A5670034B682 /* LaunchScreen.storyboard in Resources */,
-				F97EBD5C2724B21000F1AEAA /* GoogleService-Info.plist in Resources */,
+				3F94AD16272CC03B00C89636 /* GoogleService-Info.plist in Resources */,
 				F92830EC2724A5670034B682 /* Assets.xcassets in Resources */,
 				F92830E72724A5650034B682 /* Main.storyboard in Resources */,
 			);
@@ -245,6 +252,8 @@
 				F922C1D22726E89F00A39554 /* ScannerViewController.swift in Sources */,
 				F922C1D52727086700A39554 /* UserDataDao.swift in Sources */,
 				F92830E22724A5650034B682 /* SceneDelegate.swift in Sources */,
+				3F1438F5272F9EE300BE02C3 /* GuestViewController.swift in Sources */,
+				3F1438F3272F98D200BE02C3 /* ContactDetailsViewController.swift in Sources */,
 				F92830EA2724A5650034B682 /* BusinessCard.xcdatamodeld in Sources */,
 				F93833652724E8F8009AA357 /* HomeViewController.swift in Sources */,
 				F938336B2724F135009AA357 /* SettingsViewController.swift in Sources */,
@@ -395,14 +404,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HAKMYR92U9;
 				INFOPLIST_FILE = BusinessCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.business.card.BusinessCard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -414,8 +427,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HAKMYR92U9;
 				INFOPLIST_FILE = BusinessCard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
