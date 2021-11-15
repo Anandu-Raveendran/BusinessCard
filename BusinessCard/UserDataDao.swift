@@ -17,7 +17,7 @@ class UserDataDao :NSObject{
     init(name:String, phone:Int, job:String, company:String, linkedIn:String) {
         self.name = name
         self.phone = phone
-        self.company_website = company
+        self.company_website = company	
         self.job_title = job
         self.linkedIn = linkedIn
     }

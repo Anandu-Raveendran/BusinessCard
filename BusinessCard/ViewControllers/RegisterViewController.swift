@@ -8,8 +8,11 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    private let storage = Storage.storage().reference()
     
     @IBOutlet weak var emailIdField: UITextField!
     
@@ -26,6 +29,13 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var companyUrlField: UITextField!
     
     @IBOutlet weak var errorField: UILabel!
+    
+    @IBOutlet weak var dpImageView: UIImageView!
+    
+    @IBAction func UploadImageBtn(_ sender: Any) {
+        openImagePicker()
+    }
+    
     
     @IBAction func submitBtn(_ sender: Any) {
         
@@ -144,4 +154,106 @@ class RegisterViewController: UIViewController {
         return  returnValue
     }
     
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+    }
+    
 }
+
+extension RegisterViewController {
+    
+    func openImagePicker(){
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        guard let imageData = image.pngData() else {
+            return
+        }
+        
+        dpImageView.image = image
+        print("Trying to upload image")
+        
+        let imageRef = storage.child("images/file.png")
+        let uploadTask = imageRef.putData(imageData, metadata: nil, completion:{ metadata, error in
+            
+            guard let metadata = metadata else {
+                print("upload error occured")
+                return
+            }
+            let size = metadata.size
+            
+            imageRef.downloadURL(completion: {url, error in
+                guard let downloadURL = url else {
+                    print ("Download error image url")
+                    return
+                }
+                let urlString = url?.absoluteString
+                print("Download URL: \(urlString)")
+            
+            })            
+        })
+        uploadTask.observe(.failure) {(storageTaskSnapshot) in
+            
+            if let error = storageTaskSnapshot.error as NSError? {
+              switch (StorageErrorCode(rawValue: error.code)!) {
+                // Common errors
+                case .unauthenticated:
+                  print("Error: Unauthenticated; User has not yet logged in ")
+                case .unauthorized:
+                  print("Error: Unauthorized; User doesn't have permission to access file")
+                case .cancelled:
+                  print("Error: Cancelled; User cancelled the task")
+                case .quotaExceeded:
+                  print("Error: free quota is exceeded; You have to upgrade to Blaze Plan.")
+                case .unknown:
+                  print("Error: Unknown; Network connection error")
+
+                // Other possible errors
+                case .bucketNotFound:
+                  print("Error: bucketNotFound")
+                case .downloadSizeExceeded:
+                  print("Error: downloadSizeExceeded; ")
+                case .invalidArgument:
+                  print("Error: invalidArgument;")
+                case .nonMatchingChecksum:
+                  print("Error: nonMatchingChecksum;")
+                case .objectNotFound:
+                  print("Error: ObjectNotFound; File doesn't exist")
+                case .projectNotFound:
+                  print("Error: projectNotFound;")
+                case .retryLimitExceeded:
+                  print("Error: retryLimitExceeded;")
+               default:
+                  print("Error: some other error occured")
+              }
+        }
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension RegisterViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+

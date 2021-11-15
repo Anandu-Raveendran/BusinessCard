@@ -64,5 +64,7 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>For QR Code scanner</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Allow access to upload userimage</string>
 </dict>
 </plist>

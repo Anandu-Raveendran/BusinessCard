@@ -17,6 +17,8 @@ class SettingsViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
 
+        self.hideKeyboardWhenTappedAround()
+
         // Do any additional setup after loading the view.
     }
     
@@ -31,4 +33,15 @@ class SettingsViewController: UIViewController {
     }
     */
 
+}
+extension SettingsViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SettingsViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

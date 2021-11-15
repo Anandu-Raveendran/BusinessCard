@@ -35,6 +35,7 @@ class ContactDetailsViewController: UIViewController {
     @IBOutlet weak var AddToContactBtn: UIBarButtonItem!
     
     @IBAction func AddToContactBtnAction(_ sender: Any) {
+        
     }
     
     
@@ -57,6 +58,8 @@ class ContactDetailsViewController: UIViewController {
         }
         
      getUserData(for: code)
+     self.hideKeyboardWhenTappedAround()
+
 
     }
     
@@ -79,7 +82,7 @@ class ContactDetailsViewController: UIViewController {
                 self.linkedInText?.text = data?["linkedIn"] as? String
                 
                 
-                //let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
+                //let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
                 //print("Retrieved data: \(dataDescription)")
                 print("retrieved dict for \(String(describing: data?["name"]))")
                 
@@ -89,3 +92,15 @@ class ContactDetailsViewController: UIViewController {
         }
     }
 }
+extension ContactDetailsViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ContactDetailsViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
