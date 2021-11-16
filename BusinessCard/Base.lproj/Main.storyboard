@@ -325,7 +325,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ciN-6l-Rqm">
-                                <rect key="frame" x="40" y="585" width="334" height="30"/>
+                                <rect key="frame" x="40" y="748.5" width="334" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Scan QR Code">
@@ -351,23 +351,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-Tm-H7k">
-                                <rect key="frame" x="40" y="488" width="334" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-Tm-H7k">
+                                <rect key="frame" x="40" y="603" width="334" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@email.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgJ-yy-JVD">
-                                <rect key="frame" x="40" y="524" width="334" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgJ-yy-JVD">
+                                <rect key="frame" x="40" y="618" width="334" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Pz-4s-Fgf">
+                                <rect key="frame" x="157" y="493" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="BkN-7r-amp"/>
+                                    <constraint firstAttribute="height" constant="100" id="DCD-ew-20r"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Pi-WM-eiL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sZO-Lx-LkJ" firstAttribute="leading" secondItem="6Pi-WM-eiL" secondAttribute="leading" constant="40" id="0MY-g3-eQx"/>
+                            <constraint firstItem="4Pz-4s-Fgf" firstAttribute="centerX" secondItem="Yo0-EF-myp" secondAttribute="centerX" id="3Pq-jW-gxl"/>
                             <constraint firstItem="6Pi-WM-eiL" firstAttribute="trailing" secondItem="q9X-KA-1p6" secondAttribute="trailing" constant="40" id="3nN-6F-XSc"/>
                             <constraint firstItem="6Pi-WM-eiL" firstAttribute="trailing" secondItem="AsW-Tm-H7k" secondAttribute="trailing" constant="40" id="5Ux-RI-LqQ"/>
                             <constraint firstItem="AsW-Tm-H7k" firstAttribute="centerX" secondItem="Yo0-EF-myp" secondAttribute="centerX" id="85d-qD-QmT"/>
@@ -377,16 +385,18 @@
                             <constraint firstItem="1ky-hc-PJ3" firstAttribute="leading" secondItem="6Pi-WM-eiL" secondAttribute="leading" constant="60" id="G6Q-fZ-qAi"/>
                             <constraint firstItem="PgJ-yy-JVD" firstAttribute="leading" secondItem="6Pi-WM-eiL" secondAttribute="leading" constant="40" id="IE3-01-YzV"/>
                             <constraint firstItem="q9X-KA-1p6" firstAttribute="centerX" secondItem="Yo0-EF-myp" secondAttribute="centerX" id="IRt-NE-G0i"/>
+                            <constraint firstItem="4Pz-4s-Fgf" firstAttribute="top" secondItem="sZO-Lx-LkJ" secondAttribute="bottom" constant="20" id="KVt-UV-k8A"/>
                             <constraint firstItem="6Pi-WM-eiL" firstAttribute="trailing" secondItem="1ky-hc-PJ3" secondAttribute="trailing" constant="60" id="Lsl-no-kJZ"/>
                             <constraint firstItem="sZO-Lx-LkJ" firstAttribute="top" secondItem="q9X-KA-1p6" secondAttribute="bottom" constant="15" id="Ugd-5w-oPA"/>
-                            <constraint firstItem="ciN-6l-Rqm" firstAttribute="top" secondItem="PgJ-yy-JVD" secondAttribute="bottom" constant="40" id="Xym-aY-CeD"/>
+                            <constraint firstItem="ciN-6l-Rqm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PgJ-yy-JVD" secondAttribute="bottom" constant="10" id="Xym-aY-CeD"/>
                             <constraint firstItem="PgJ-yy-JVD" firstAttribute="top" secondItem="AsW-Tm-H7k" secondAttribute="bottom" constant="15" id="ZfX-oq-J95"/>
                             <constraint firstItem="6Pi-WM-eiL" firstAttribute="trailing" secondItem="ciN-6l-Rqm" secondAttribute="trailing" constant="40" id="aVR-li-2Z4"/>
                             <constraint firstItem="ciN-6l-Rqm" firstAttribute="leading" secondItem="6Pi-WM-eiL" secondAttribute="leading" constant="40" id="eCb-1t-3Ex"/>
                             <constraint firstItem="AsW-Tm-H7k" firstAttribute="leading" secondItem="6Pi-WM-eiL" secondAttribute="leading" constant="40" id="gjN-6G-3kN"/>
+                            <constraint firstItem="1ky-hc-PJ3" firstAttribute="top" secondItem="ciN-6l-Rqm" secondAttribute="bottom" constant="20" id="hwl-z8-y8w"/>
                             <constraint firstItem="6Pi-WM-eiL" firstAttribute="bottom" secondItem="1ky-hc-PJ3" secondAttribute="bottom" constant="40" id="jvW-Rl-pRM"/>
                             <constraint firstItem="6Pi-WM-eiL" firstAttribute="trailing" secondItem="PgJ-yy-JVD" secondAttribute="trailing" constant="40" id="q2O-XW-ZcI"/>
-                            <constraint firstItem="AsW-Tm-H7k" firstAttribute="top" secondItem="sZO-Lx-LkJ" secondAttribute="bottom" constant="15" id="vRD-sU-KUw"/>
+                            <constraint firstItem="AsW-Tm-H7k" firstAttribute="top" secondItem="4Pz-4s-Fgf" secondAttribute="bottom" constant="10" id="vRD-sU-KUw"/>
                             <constraint firstItem="PgJ-yy-JVD" firstAttribute="centerX" secondItem="Yo0-EF-myp" secondAttribute="centerX" id="wHW-qd-Udo"/>
                         </constraints>
                     </view>
@@ -408,6 +418,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="DPimage" destination="4Pz-4s-Fgf" id="gXc-bM-3cZ"/>
                         <outlet property="QRCodeImageView" destination="sZO-Lx-LkJ" id="31E-JN-Iny"/>
                         <outlet property="email" destination="PgJ-yy-JVD" id="cYW-0k-Cz7"/>
                         <outlet property="name" destination="AsW-Tm-H7k" id="BH4-Fe-bme"/>
@@ -631,7 +642,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="FUD-MJ-aLo"/>
         <segue reference="MZ1-if-NQs"/>
-        <segue reference="yD2-fr-3lg"/>
+        <segue reference="EFo-JD-NyT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.metering.none" catalog="system" width="128" height="93"/>

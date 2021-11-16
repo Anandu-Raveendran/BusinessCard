@@ -7,10 +7,12 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 
 class HomeViewController: UIViewController {
         
     @IBOutlet weak var QRCodeImageView: UIImageView!
+    @IBOutlet weak var DPimage: UIImageView!
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var email: UILabel!
@@ -62,10 +64,42 @@ class HomeViewController: UIViewController {
                     AppManager.shared.logout()
                 }
                 
+                self.getImage()
+                
             } else {
                 print("Document does not exit for uid \(uid)")
             }
         }
+    }
+    
+    func getImage(){
+        let storage = Storage.storage().reference()
+
+        print("getting url for images/\(String(describing: AppManager.shared.loggedInUID!)).jpeg")
+              
+        let imageRef = storage.child("images/\(String(describing: AppManager.shared.loggedInUID!)).jpeg")
+        imageRef.downloadURL(completion: { url, error in
+                
+            if error != nil {
+                print("download error occured \(error.debugDescription)")
+                return
+            }
+            
+            print("image url \(String(describing: url!.absoluteURL))")
+            
+            DispatchQueue.global().async {
+                if let data =  try? Data(contentsOf: url!.absoluteURL) {
+                
+                    DispatchQueue.main.async {
+                        self.DPimage.image = UIImage(data: data)
+                    }
+                } else {print("Data is null")}
+            }
+            
+        })
+        
+        
+        
     }
     
     func generateQRCode(from string: String) -> UIImage? {

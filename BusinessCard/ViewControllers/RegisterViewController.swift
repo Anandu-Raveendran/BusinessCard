@@ -13,6 +13,7 @@ import FirebaseStorage
 class RegisterViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     private let storage = Storage.storage().reference()
+    private var image:UIImage? = nil
     
     @IBOutlet weak var emailIdField: UITextField!
     
@@ -89,8 +90,13 @@ class RegisterViewController: UIViewController , UIImagePickerControllerDelegate
                 strongSelf.errorField.text = "Account created"
                 AppManager.shared.loggedInUID = result?.user.uid
                 AppManager.shared.db = Firestore.firestore()
+                self?.uploadImage()
                 
-                AppManager.shared.db.collection("users").document(result!.user.uid).setData([                               "name":name, "phone":phone!,                                                                          "linkedIn":linkedIn,                                                                                 "company_website":company_website,                                                                   "job_title": jobTitle])
+                AppManager.shared.db.collection("users").document(result!.user.uid).setData([
+                    "name":name, "phone":phone!,
+                    "linkedIn":linkedIn,
+                    "company_website":company_website,
+                    "job_title": jobTitle                ])
                 {
                     error in
                     
@@ -175,31 +181,29 @@ extension RegisterViewController {
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
         }
-        guard let imageData = image.pngData() else {
+        self.image = image
+                
+        dpImageView.image = image
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadImage(){
+        guard let imageData = image?.jpegData(compressionQuality: 0.2) else {
             return
         }
-        
-        dpImageView.image = image
-        print("Trying to upload image")
-        
-        let imageRef = storage.child("images/file.png")
+        let imagename = AppManager.shared.loggedInUID
+
+        print("Trying to upload image of size \(imageData.count)")
+
+        let imageRef = storage.child("images/\(String(describing: imagename!)).jpeg")
         let uploadTask = imageRef.putData(imageData, metadata: nil, completion:{ metadata, error in
-            
-            guard let metadata = metadata else {
+            	
+            guard let _ = metadata else {
                 print("upload error occured")
                 return
             }
-            let size = metadata.size
             
-            imageRef.downloadURL(completion: {url, error in
-                guard let downloadURL = url else {
-                    print ("Download error image url")
-                    return
-                }
-                let urlString = url?.absoluteString
-                print("Download URL: \(urlString)")
-            
-            })            
+           
         })
         uploadTask.observe(.failure) {(storageTaskSnapshot) in
             
@@ -212,7 +216,7 @@ extension RegisterViewController {
                   print("Error: Unauthorized; User doesn't have permission to access file")
                 case .cancelled:
                   print("Error: Cancelled; User cancelled the task")
-                case .quotaExceeded:
+                case .quotaExceeded	:
                   print("Error: free quota is exceeded; You have to upgrade to Blaze Plan.")
                 case .unknown:
                   print("Error: Unknown; Network connection error")
@@ -237,7 +241,6 @@ extension RegisterViewController {
               }
         }
         }
-        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
