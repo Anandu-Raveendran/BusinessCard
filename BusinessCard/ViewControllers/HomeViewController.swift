@@ -92,15 +92,15 @@ class HomeViewController: UIViewController {
                 
                     DispatchQueue.main.async {
                         self.DPimage.image = UIImage(data: data)
+                        AppManager.shared.dpImage = self.DPimage.image
                     }
                 } else {print("Data is null")}
             }
             
         })
-        
-        
-        
     }
+    
+    
     
     func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
@@ -121,9 +121,18 @@ class HomeViewController: UIViewController {
             let dest = segue.destination as! ScannerViewController
             dest.callback = QRCodeScannerCallback
             dest.calledFrom = "HomeViewController"
+        } else if(segue.identifier == "toSettings"){
+            let dest = segue.destination as! SettingsViewController
+            dest.callback = dataUpdateDone
         }
     }
     func QRCodeScannerCallback(code:String){
         self.code = code
+    }
+    func dataUpdateDone(){
+        print("dataUpdateDone called")
+        if let uid = AppManager.shared.loggedInUID {           
+            getUserData(for:uid)
+        }
     }
 }

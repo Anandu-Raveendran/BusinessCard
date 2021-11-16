@@ -15,7 +15,7 @@ class AppManager {
     var loggedInUID:String? = nil
     var db:Firestore!
     var userData:UserDataDao? = UserDataDao()
-    
+    var dpImage:UIImage? = nil
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
     
     private init() {

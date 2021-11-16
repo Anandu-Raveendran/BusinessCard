@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseStorage
 
-class RegisterViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class RegisterViewController: UIViewController {
     
     private let storage = Storage.storage().reference()
     private var image:UIImage? = nil
@@ -167,7 +167,7 @@ class RegisterViewController: UIViewController , UIImagePickerControllerDelegate
     
 }
 
-extension RegisterViewController {
+extension RegisterViewController :  UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     func openImagePicker(){
         let picker = UIImagePickerController()
