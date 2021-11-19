@@ -56,7 +56,6 @@ class SettingsViewController: UIViewController {
         }
         
         let phone = Int(phoneNumberField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0")
-        
         let linkedIn = linkedInUrl.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let company_website = companyUrlField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let jobTitle = jobTitleField.text ?? ""

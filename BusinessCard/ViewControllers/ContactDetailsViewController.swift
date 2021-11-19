@@ -57,13 +57,17 @@ class ContactDetailsViewController: UIViewController {
             }
         }
         
-     getUserData(for: code)
+     getUserData(for_uid: code)
+        AppManager.shared.getImage(for_uid: code, set_to: profilePic, is_current_user_dp: false)
      self.hideKeyboardWhenTappedAround()
 
 
     }
     
-    func getUserData(for uid:String){
+    func getUserData(for_uid uid:String){
+        
+        print("finding data for user id \(uid)")
+        
         AppManager.shared.db = Firestore.firestore()
         let docRef = AppManager.shared.db.collection("users").document(uid)
         
@@ -91,6 +95,7 @@ class ContactDetailsViewController: UIViewController {
             }
         }
     }
+    
 }
 extension ContactDetailsViewController {
     func hideKeyboardWhenTappedAround() {

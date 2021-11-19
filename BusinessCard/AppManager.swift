@@ -49,4 +49,35 @@ class AppManager {
         }
     }
     
+    func getImage(for_uid:String, set_to:UIImageView, is_current_user_dp: Bool){
+        let storage = Storage.storage().reference()
+
+        print("getting url for images/\(String(describing: for_uid)).jpeg")
+              
+        let imageRef = storage.child("images/\(String(describing: for_uid)).jpeg")
+        imageRef.downloadURL(completion: { url, error in
+                
+            if error != nil {
+                print("download error occured \(error.debugDescription)")
+                return
+            }
+            
+            print("image url \(String(describing: url!.absoluteURL))")
+            
+            DispatchQueue.global().async {
+                if let data =  try? Data(contentsOf: url!.absoluteURL) {
+                
+                    DispatchQueue.main.async {
+                        set_to.image = UIImage(data: data)
+                        if is_current_user_dp {
+                            AppManager.shared.dpImage = set_to.image
+                        }
+                    }
+                } else {print("Data is null")}
+            }
+            
+        })
+    }
+
+    
 }

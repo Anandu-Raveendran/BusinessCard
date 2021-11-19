@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -246,14 +247,20 @@
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LinkedIn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFe-r2-BCB">
                                 <rect key="frame" x="60" y="606" width="294" height="21"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" link="YES" staticText="YES" allowsDirectInteraction="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company Url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKT-f0-POW">
                                 <rect key="frame" x="60" y="647" width="294" height="21"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" link="YES" staticText="YES" allowsDirectInteraction="YES"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -427,6 +434,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcL-Vb-Ucv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1834.7826086956522" y="-662.27678571428567"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="jQ5-cp-ajy">
+            <objects>
+                <tableViewController id="h6q-Lm-kcK" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="KqZ-0h-oJR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WM3-62-j6N">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WM3-62-j6N" id="7xd-3C-vXI">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="h6q-Lm-kcK" id="n6m-iP-HBf"/>
+                            <outlet property="delegate" destination="h6q-Lm-kcK" id="Q47-Ld-26h"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MLw-OD-Z81" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2846" y="-812"/>
         </scene>
         <!--Settings-->
         <scene sceneID="cdY-3F-fYU">
@@ -753,6 +788,9 @@
         <image name="etting" width="128" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

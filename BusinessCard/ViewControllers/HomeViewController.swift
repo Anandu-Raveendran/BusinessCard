@@ -64,7 +64,8 @@ class HomeViewController: UIViewController {
                     AppManager.shared.logout()
                 }
                 
-                self.getImage()
+                AppManager.shared.getImage(for_uid:AppManager.shared.loggedInUID ?? "", set_to: self.DPimage, is_current_user_dp: true)
+                
                 
             } else {
                 print("Document does not exit for uid \(uid)")
@@ -72,33 +73,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func getImage(){
-        let storage = Storage.storage().reference()
-
-        print("getting url for images/\(String(describing: AppManager.shared.loggedInUID!)).jpeg")
-              
-        let imageRef = storage.child("images/\(String(describing: AppManager.shared.loggedInUID!)).jpeg")
-        imageRef.downloadURL(completion: { url, error in
-                
-            if error != nil {
-                print("download error occured \(error.debugDescription)")
-                return
-            }
-            
-            print("image url \(String(describing: url!.absoluteURL))")
-            
-            DispatchQueue.global().async {
-                if let data =  try? Data(contentsOf: url!.absoluteURL) {
-                
-                    DispatchQueue.main.async {
-                        self.DPimage.image = UIImage(data: data)
-                        AppManager.shared.dpImage = self.DPimage.image
-                    }
-                } else {print("Data is null")}
-            }
-            
-        })
-    }
     
     
     
@@ -136,3 +110,5 @@ class HomeViewController: UIViewController {
         }
     }
 }
+
+
