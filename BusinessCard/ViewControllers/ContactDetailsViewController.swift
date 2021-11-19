@@ -45,20 +45,8 @@ class ContactDetailsViewController: UIViewController {
     
     @IBAction func AddToContactBtnAction(_ sender: Any) {
         //Add contacts to mycontact list
-        let docRef = AppManager.shared.db.collection("contactlist").document(AppManager.shared.loggedInUID!)
-        
-        docRef.getDocument{
-        (document, error) in
-                       
-            if let document = document, document.exists {
-                
-                let data = document.data()
-                
-                AppManager.shared.contactList = data?["contacts"] as! [String]
-            }
-        }
-        AppManager.shared.contactList.append(uid!)
-        AppManager.shared.db.collection("contactlist").document(AppManager.shared.loggedInUID!).setData(["contacts": AppManager.shared.contactList])
+        AppManager.shared.getContacts(for_uid: AppManager.shared.loggedInUID!)
+        AppManager.shared.addContact(for_uid: AppManager.shared.loggedInUID!)
         
         self.navigationController?.popToRootViewController(animated: true)
     }

@@ -80,6 +80,26 @@ class AppManager {
         })
     }
     
+    func getContacts(for_uid:String){
+        if contactList.isEmpty {
+
+            let docRef = db.collection("contactlist").document(for_uid)
+                docRef.getDocument{
+                    (document, error) in
+                       
+                    if let document = document, document.exists {
+                        let data = document.data()
+                        AppManager.shared.contactList = data?["contacts"] as! [String]
+                    }
+            }
+        }
+    }
+    
+    func addContact(for_uid:String){
+        contactList.append(for_uid)
+        db.collection("contactlist").document(loggedInUID!).setData(["contacts": contactList])
+    }
+    
     func openUrl(for_url:String) {
         var mainUrl:URL!
         

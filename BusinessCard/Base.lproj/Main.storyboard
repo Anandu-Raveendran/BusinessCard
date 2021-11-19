@@ -293,7 +293,7 @@
                                 <action selector="backBtn:" destination="BjU-D8-I3K" id="qoD-Sj-dhC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="X60-eX-otM">
+                        <barButtonItem key="rightBarButtonItem" title="Add to contacts" style="plain" id="X60-eX-otM">
                             <connections>
                                 <action selector="AddToContactBtnAction:" destination="BjU-D8-I3K" id="Hxp-ZK-L0p"/>
                             </connections>
@@ -348,6 +348,9 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                     <imageReference key="image" image="person.fill" catalog="system" symbolScale="large" renderingMode="template"/>
                                 </state>
+                                <connections>
+                                    <segue destination="h6q-Lm-kcK" kind="show" id="MT4-dJ-oHZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My QR Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9X-KA-1p6">
                                 <rect key="frame" x="40" y="103" width="334" height="21"/>
@@ -455,6 +458,7 @@
                             <outlet property="delegate" destination="h6q-Lm-kcK" id="Q47-Ld-26h"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="bT9-CO-qlf"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLw-OD-Z81" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
