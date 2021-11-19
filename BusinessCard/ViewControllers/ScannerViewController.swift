@@ -111,7 +111,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "scannerToDetails"){
             let dest = segue.destination as! ContactDetailsViewController
-            dest.code = code
+            dest.uid = code
             dest.calledFrom = calledFrom
         }
     }

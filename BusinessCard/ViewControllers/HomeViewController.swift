@@ -41,7 +41,6 @@ class HomeViewController: UIViewController {
         
         docRef.getDocument{
         (document, error) in
-            
                        
             if let document = document, document.exists {
                 

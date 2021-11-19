@@ -17,6 +17,7 @@ class AppManager {
     var userData:UserDataDao? = UserDataDao()
     var dpImage:UIImage? = nil
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    var contactList = [String]()
     
     private init() {
         
@@ -77,6 +78,29 @@ class AppManager {
             }
             
         })
+    }
+    
+    func openUrl(for_url:String) {
+        var mainUrl:URL!
+        
+        if let url = URL(string: for_url), UIApplication.shared.canOpenURL(url) {
+            mainUrl = url
+        } else if let url = URL(string: "http://\(for_url)"), UIApplication.shared.canOpenURL(url)  {
+            mainUrl = url
+        } else if let url = URL(string: "https://\(for_url)"), UIApplication.shared.canOpenURL(url)  {
+            mainUrl = url
+        } else {
+            print("Cant open company website\(String(describing: for_url))")
+            return
+        }
+        
+        print("Opening \(String(describing: mainUrl))")
+        if #available(iOS 10.0, *){
+            UIApplication.shared.open(mainUrl, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(mainUrl)
+        }
+        
     }
 
     

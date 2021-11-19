@@ -10,7 +10,7 @@ import FirebaseFirestore
 
 class ContactDetailsViewController: UIViewController {
 
-    var code:String? = nil // the code got from QRcode
+    var uid:String? = nil // the code got from QRcode
     var calledFrom:String? = nil // who is calling this? based on this show UI. save button if logged in
     
     
@@ -24,9 +24,18 @@ class ContactDetailsViewController: UIViewController {
     
     @IBOutlet weak var emailIDText: UILabel!
     
-    @IBOutlet weak var linkedInText: UILabel!
+    @IBOutlet weak var linkedInText: UIButton!
     
-    @IBOutlet weak var comapanyurlText: UILabel!
+    @IBOutlet weak var comapanyurlText: UIButton!
+    
+    
+    @IBAction func companyWebsiteClicked(_ sender: Any) {
+        AppManager.shared.openUrl(for_url: comapanyurlText.currentTitle!)
+    }
+   
+    @IBAction func linkedInclicked(_ sender: Any) {
+        AppManager.shared.openUrl(for_url: linkedInText.currentTitle!)
+    }
     
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
@@ -35,14 +44,29 @@ class ContactDetailsViewController: UIViewController {
     @IBOutlet weak var AddToContactBtn: UIBarButtonItem!
     
     @IBAction func AddToContactBtnAction(_ sender: Any) {
+        //Add contacts to mycontact list
+        let docRef = AppManager.shared.db.collection("contactlist").document(AppManager.shared.loggedInUID!)
         
+        docRef.getDocument{
+        (document, error) in
+                       
+            if let document = document, document.exists {
+                
+                let data = document.data()
+                
+                AppManager.shared.contactList = data?["contacts"] as! [String]
+            }
+        }
+        AppManager.shared.contactList.append(uid!)
+        AppManager.shared.db.collection("contactlist").document(AppManager.shared.loggedInUID!).setData(["contacts": AppManager.shared.contactList])
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let code = code else {
+        guard let code = uid else {
   
             print("Error QR code is empty")
             return
@@ -82,10 +106,9 @@ class ContactDetailsViewController: UIViewController {
                 self.nameText?.text = data?["name"] as? String
                 self.phoneText?.text = data?["phone"] as? String
                 self.jobTitle?.text = data?["job_title"] as? String
-                self.comapanyurlText?.text = data?["company_website"] as? String
-                self.linkedInText?.text = data?["linkedIn"] as? String
-                
-                
+                self.comapanyurlText?.setTitle(data?["company_website"] as? String, for: .normal)
+                self.linkedInText?.setTitle(data?["linkedIn"] as? String, for: .normal)
+                                
                 //let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
                 //print("Retrieved data: \(dataDescription)")
                 print("retrieved dict for \(String(describing: data?["name"]))")
