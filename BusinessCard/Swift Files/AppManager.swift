@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import CoreData
 
 class AppManager {
     
@@ -18,6 +19,7 @@ class AppManager {
     var dpImage:UIImage? = nil
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
     var contactList = [String]()
+    let database = DataSource()
     
     private init() {
         db = Firestore.firestore()
@@ -50,7 +52,7 @@ class AppManager {
         }
     }
     
-    func getUserData(for uid:String, callback:((UserDataDao)->())?){
+    func getUserDataFireBase(for uid:String, callback:((UserDataDao)->())?){
         if loggedInUID != nil {
             
         let docRef = AppManager.shared.db.collection("users").document(uid)
@@ -68,7 +70,8 @@ class AppManager {
                 contact.job_title = data?["job_title"] as? String ?? ""
                 contact.company_website = data?["company_website"] as? String ?? ""
                 contact.linkedIn = data?["linkedIn"] as? String ?? ""
-                
+                contact.email = data?["email"] as? String ?? ""
+                contact.uid = uid
                 if let callback = callback{
                     callback(contact)
                 }
@@ -82,7 +85,7 @@ class AppManager {
         }
     }
     
-    func getImage(for_uid:String, set_to:UIImageView, is_current_user_dp: Bool){
+    func getImageFirebase(for_uid:String,  callback:((Data?)->())?){
         let storage = Storage.storage().reference()
         
         print("getting url for images/\(String(describing: for_uid)).jpeg")
@@ -101,9 +104,8 @@ class AppManager {
                 if let data =  try? Data(contentsOf: url!.absoluteURL) {
                     
                     DispatchQueue.main.async {
-                        set_to.image = UIImage(data: data)
-                        if is_current_user_dp {
-                            AppManager.shared.dpImage = set_to.image
+                        if let callback = callback {
+                            callback(data)
                         }
                     }
                 } else {print("Data is null")}
@@ -112,7 +114,7 @@ class AppManager {
         })
     }
     
-    func getContacts(for_uid:String, callback:(([String])->())?){
+    func getContactsFirebase(for_uid:String, callback:(([String])->())?){
         
         let docRef = db.collection("contactlist").document(for_uid)
         docRef.getDocument{
@@ -129,7 +131,7 @@ class AppManager {
         
     }
     
-    func addContact(for_uid:String, callback:(()->())?){
+    func addContactFirebase(for_uid:String, callback:(()->())?){
         if let loggedInUID = loggedInUID {
             
             if contactList.isEmpty {
@@ -152,7 +154,7 @@ class AppManager {
         }
     }
     
-    func openUrl(for_url:String) {
+    func openUrlInBrowser(for_url:String) {
         var mainUrl:URL!
         
         if let url = URL(string: for_url), UIApplication.shared.canOpenURL(url) {
@@ -174,6 +176,4 @@ class AppManager {
         }
         
     }
-    
-    
 }

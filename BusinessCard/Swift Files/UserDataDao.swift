@@ -13,8 +13,12 @@ class UserDataDao :NSObject{
     var job_title:String
     var company_website:String
     var linkedIn:String
+    var email:String
+    var uid:String
     
-    init(name:String, phone:Int64, job:String, company:String, linkedIn:String) {
+    init(uid:String, email:String, name:String, phone:Int64, job:String, company:String, linkedIn:String) {
+        self.uid = uid
+        self.email = email
         self.name = name
         self.phone = phone
         self.company_website = company	
@@ -23,6 +27,8 @@ class UserDataDao :NSObject{
     }
     
     override init() {
+        self.uid = ""
+        self.email = ""
         self.name = ""
         self.phone = 0
         self.company_website = ""

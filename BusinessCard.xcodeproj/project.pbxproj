@@ -11,6 +11,7 @@
 		3F1438F5272F9EE300BE02C3 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1438F4272F9EE300BE02C3 /* GuestViewController.swift */; };
 		3F1E1C8327443D82000B73E0 /* ContactListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E1C8227443D82000B73E0 /* ContactListTableViewController.swift */; };
 		3F443C3227499489008CC23B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F443C3127499489008CC23B /* ContactTableViewCell.swift */; };
+		3F443C3427499B05008CC23B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F443C3327499B05008CC23B /* DataSource.swift */; };
 		3F94AD16272CC03B00C89636 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F94AD15272CC03A00C89636 /* GoogleService-Info.plist */; };
 		5F40BCDBD79845B9ABEE809A /* Pods_BusinessCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */; };
 		F922C1D22726E89F00A39554 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922C1D12726E89F00A39554 /* ScannerViewController.swift */; };
@@ -34,6 +35,7 @@
 		3F1438F4272F9EE300BE02C3 /* GuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
 		3F1E1C8227443D82000B73E0 /* ContactListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewController.swift; sourceTree = "<group>"; };
 		3F443C3127499489008CC23B /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		3F443C3327499B05008CC23B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		3F94AD15272CC03A00C89636 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFFF18734AA1278C35B687CB /* Pods-BusinessCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCard.debug.xcconfig"; path = "Target Support Files/Pods-BusinessCard/Pods-BusinessCard.debug.xcconfig"; sourceTree = "<group>"; };
 		C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +74,7 @@
 				F93833672724EAB7009AA357 /* AppManager.swift */,
 				F922C1D42727086700A39554 /* UserDataDao.swift */,
 				3F443C3127499489008CC23B /* ContactTableViewCell.swift */,
+				3F443C3327499B05008CC23B /* DataSource.swift */,
 			);
 			path = "Swift Files";
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				F93833682724EAB7009AA357 /* AppManager.swift in Sources */,
 				F92830E42724A5650034B682 /* LoginPageViewController.swift in Sources */,
 				F938335C2724BA45009AA357 /* RegisterViewController.swift in Sources */,
+				3F443C3427499B05008CC23B /* DataSource.swift in Sources */,
 				F92830E02724A5650034B682 /* AppDelegate.swift in Sources */,
 				3F443C3227499489008CC23B /* ContactTableViewCell.swift in Sources */,
 				F922C1D22726E89F00A39554 /* ScannerViewController.swift in Sources */,

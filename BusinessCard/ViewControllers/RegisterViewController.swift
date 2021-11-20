@@ -96,7 +96,8 @@ class RegisterViewController: UIViewController {
                     "name":name, "phone":phone!,
                     "linkedIn":linkedIn,
                     "company_website":company_website,
-                    "job_title": jobTitle                ])
+                    "job_title": jobTitle,
+                    "email": email ])
                 {
                     error in
                     

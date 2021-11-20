@@ -3,6 +3,7 @@
     <entity name="Contact" representedClassName="Contact" syncable="YES" codeGenerationType="class">
         <attribute name="companyUrl" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="job_title" optional="YES" attributeType="String"/>
         <attribute name="linkedInUrl" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -10,6 +11,6 @@
         <attribute name="uid" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Contact" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="Contact" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>

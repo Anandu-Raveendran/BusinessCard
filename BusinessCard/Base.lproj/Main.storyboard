@@ -484,6 +484,11 @@
                                         <constraint firstAttribute="trailing" secondItem="pZl-wW-Vj6" secondAttribute="trailing" constant="10" id="uBt-jL-3GO"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dpimageField" destination="Dol-OY-nHc" id="dtT-TM-6hV"/>
+                                    <outlet property="nameField" destination="E3R-rx-FpQ" id="WPQ-AK-euU"/>
+                                    <outlet property="phoneField" destination="pZl-wW-Vj6" id="V9V-aN-g6b"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

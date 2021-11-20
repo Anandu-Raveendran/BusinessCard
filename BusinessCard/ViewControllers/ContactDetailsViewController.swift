@@ -12,7 +12,7 @@ class ContactDetailsViewController: UIViewController {
 
     var uid:String? = nil // the code got from QRcode
     var calledFrom:String? = nil // who is calling this? based on this show UI. save button if logged in
-    
+    var userDetails:UserDataDao? = nil
     
     @IBOutlet weak var profilePic: UIImageView!
     
@@ -30,11 +30,11 @@ class ContactDetailsViewController: UIViewController {
     
     
     @IBAction func companyWebsiteClicked(_ sender: Any) {
-        AppManager.shared.openUrl(for_url: comapanyurlText.currentTitle!)
+        AppManager.shared.openUrlInBrowser(for_url: comapanyurlText.currentTitle!)
     }
    
     @IBAction func linkedInclicked(_ sender: Any) {
-        AppManager.shared.openUrl(for_url: linkedInText.currentTitle!)
+        AppManager.shared.openUrlInBrowser(for_url: linkedInText.currentTitle!)
     }
     
     @IBAction func backBtn(_ sender: Any) {
@@ -45,9 +45,18 @@ class ContactDetailsViewController: UIViewController {
     
     @IBAction func AddToContactBtnAction(_ sender: Any) {
         //Add contacts to mycontact list
-        AppManager.shared.getContacts(for_uid: AppManager.shared.loggedInUID!, callback: nil)
-        AppManager.shared.addContact(for_uid: AppManager.shared.loggedInUID!, callback: nil)
-        
+        AppManager.shared.getContactsFirebase(for_uid: AppManager.shared.loggedInUID!, callback: nil)
+        AppManager.shared.addContactFirebase(for_uid: AppManager.shared.loggedInUID!, callback: nil)
+        if let data = userDetails{
+            AppManager.shared.database.saveContact(uid: data.uid,
+                                                   name: data.name ,
+                                                   phone: data.phone,
+                                                   email: data.email,
+                                                   companyUrl: data.company_website,
+                                                   linkedIn: data.linkedIn,
+                                                   job_title: data.job_title,
+                                                   image: profilePic.image?.jpegData(compressionQuality: 1) ?? Data())
+        }
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -68,43 +77,30 @@ class ContactDetailsViewController: UIViewController {
                 AddToContactBtn.isEnabled = true
             }
         }
+        AppManager.shared.getUserDataFireBase(for: code, callback: getUserDataCallback)
+        AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
         
-     getUserData(for_uid: code)
-        AppManager.shared.getImage(for_uid: code, set_to: profilePic, is_current_user_dp: false)
-     self.hideKeyboardWhenTappedAround()
-
-
+        self.hideKeyboardWhenTappedAround()
     }
-    
-    func getUserData(for_uid uid:String){
-        
-        print("finding data for user id \(uid)")
-        
-        AppManager.shared.db = Firestore.firestore()
-        let docRef = AppManager.shared.db.collection("users").document(uid)
-        
-        docRef.getDocument{
-        (document, error) in
-            
-                       
-            if let document = document, document.exists {
-                
-                let data = document.data()
-                
-                self.nameText?.text = data?["name"] as? String
-                self.phoneText?.text = data?["phone"] as? String
-                self.jobTitle?.text = data?["job_title"] as? String
-                self.comapanyurlText?.setTitle(data?["company_website"] as? String, for: .normal)
-                self.linkedInText?.setTitle(data?["linkedIn"] as? String, for: .normal)
-                                
-                //let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
-                //print("Retrieved data: \(dataDescription)")
-                print("retrieved dict for \(String(describing: data?["name"]))")
-                
-            } else {
-                print("Document does not exit for uid \(uid)")
-            }
+
+
+    func gotImageCallback(imageData:Data?){
+        if let imageData = imageData {
+            self.profilePic.image = UIImage(data:imageData)
         }
+    }
+
+    func getUserDataCallback(contact:UserDataDao){
+               
+        userDetails = contact
+                
+        self.nameText?.text = contact.name
+        self.phoneText?.text = String(contact.phone)
+        self.jobTitle?.text = contact.job_title
+        self.comapanyurlText?.setTitle(contact.company_website, for: .normal)
+        self.linkedInText?.setTitle(contact.linkedIn, for: .normal)
+        self.emailIDText?.text = contact.email
+                                
     }
     
 }

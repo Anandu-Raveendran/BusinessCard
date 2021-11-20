@@ -23,5 +23,6 @@ extension Contact {
     @NSManaged public var name: String?
     @NSManaged public var phone: Int64
     @NSManaged public var uid: String?
+    @NSManaged public var image: Data?
 
 }

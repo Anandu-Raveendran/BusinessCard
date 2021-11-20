@@ -31,8 +31,15 @@ class HomeViewController: UIViewController {
         if let uid = AppManager.shared.loggedInUID { // set the logged in used uid as the QR code data
             QRCodeImageView.image = generateQRCode(from: uid)
             
-            AppManager.shared.getUserData(for: uid, callback: getUserDataCallback)
-            AppManager.shared.getImage(for_uid:AppManager.shared.loggedInUID ?? "", set_to: self.DPimage, is_current_user_dp: true)
+            AppManager.shared.getUserDataFireBase(for: uid, callback: getUserDataCallback)
+            AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
+        }
+    }
+    
+    func gotImageCallback(imageData:Data?){
+        if let imageData = imageData {
+            self.DPimage.image = UIImage(data:imageData)
+            AppManager.shared.dpImage = UIImage(data:imageData)
         }
     }
     
@@ -89,7 +96,7 @@ class HomeViewController: UIViewController {
     func dataUpdateDone(){
         print("dataUpdateDone called")
         if let uid = AppManager.shared.loggedInUID {
-            AppManager.shared.getUserData(for: uid, callback: getUserDataCallback)
+            AppManager.shared.getUserDataFireBase(for: uid, callback: getUserDataCallback)
         }
     }
 }
