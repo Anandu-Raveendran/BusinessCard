@@ -45,8 +45,8 @@ class ContactDetailsViewController: UIViewController {
     
     @IBAction func AddToContactBtnAction(_ sender: Any) {
         //Add contacts to mycontact list
-        AppManager.shared.getContacts(for_uid: AppManager.shared.loggedInUID!)
-        AppManager.shared.addContact(for_uid: AppManager.shared.loggedInUID!)
+        AppManager.shared.getContacts(for_uid: AppManager.shared.loggedInUID!, callback: nil)
+        AppManager.shared.addContact(for_uid: AppManager.shared.loggedInUID!, callback: nil)
         
         self.navigationController?.popToRootViewController(animated: true)
     }

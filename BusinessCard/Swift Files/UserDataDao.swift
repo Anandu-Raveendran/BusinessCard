@@ -9,12 +9,12 @@ import Foundation
 
 class UserDataDao :NSObject{
     var name:String
-    var phone:Int
+    var phone:Int64
     var job_title:String
     var company_website:String
     var linkedIn:String
     
-    init(name:String, phone:Int, job:String, company:String, linkedIn:String) {
+    init(name:String, phone:Int64, job:String, company:String, linkedIn:String) {
         self.name = name
         self.phone = phone
         self.company_website = company	

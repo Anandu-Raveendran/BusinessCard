@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseStorage
 
 class HomeViewController: UIViewController {
-        
+    
     @IBOutlet weak var QRCodeImageView: UIImageView!
     @IBOutlet weak var DPimage: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -30,46 +30,30 @@ class HomeViewController: UIViewController {
         
         if let uid = AppManager.shared.loggedInUID { // set the logged in used uid as the QR code data
             QRCodeImageView.image = generateQRCode(from: uid)
-           
-            getUserData(for:uid)
+            
+            AppManager.shared.getUserData(for: uid, callback: getUserDataCallback)
+            AppManager.shared.getImage(for_uid:AppManager.shared.loggedInUID ?? "", set_to: self.DPimage, is_current_user_dp: true)
         }
     }
     
-    func getUserData(for uid:String){
-        AppManager.shared.db = Firestore.firestore()
-        let docRef = AppManager.shared.db.collection("users").document(uid)
+    func getUserDataCallback(contact:UserDataDao){
         
-        docRef.getDocument{
-        (document, error) in
-                       
-            if let document = document, document.exists {
-                
-                let data = document.data()
-                
-                AppManager.shared.userData?.name = data?["name"] as! String
-                AppManager.shared.userData?.phone = data?["phone"] as! Int
-                AppManager.shared.userData?.job_title = data?["job_title"] as! String
-                AppManager.shared.userData?.company_website = data?["company_website"] as! String
-                AppManager.shared.userData?.linkedIn = data?["linkedIn"] as! String
-                
-                
-                //let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
-                //print("Retrieved data: \(dataDescription)")
-                print("retrieved dict for \(String(describing: AppManager.shared.userData?.name))")
-                self.name.text = AppManager.shared.userData?.name
-                if let emailID = FirebaseAuth.Auth.auth().currentUser?.email {
-                    self.email.text = emailID
-                } else {
-                    AppManager.shared.logout()
-                }
-                
-                AppManager.shared.getImage(for_uid:AppManager.shared.loggedInUID ?? "", set_to: self.DPimage, is_current_user_dp: true)
-                
-                
-            } else {
-                print("Document does not exit for uid \(uid)")
-            }
+        
+        AppManager.shared.userData?.name = contact.name
+        AppManager.shared.userData?.phone = contact.phone
+        AppManager.shared.userData?.job_title = contact.job_title
+        AppManager.shared.userData?.company_website = contact.company_website
+        AppManager.shared.userData?.linkedIn = contact.linkedIn
+        
+        
+        print("retrieved dict for \(String(describing: AppManager.shared.userData?.name))")
+        self.name.text = AppManager.shared.userData?.name
+        if let emailID = FirebaseAuth.Auth.auth().currentUser?.email {
+            self.email.text = emailID
+        } else {
+            AppManager.shared.logout()
         }
+        
     }
     
     
@@ -104,8 +88,8 @@ class HomeViewController: UIViewController {
     }
     func dataUpdateDone(){
         print("dataUpdateDone called")
-        if let uid = AppManager.shared.loggedInUID {           
-            getUserData(for:uid)
+        if let uid = AppManager.shared.loggedInUID {
+            AppManager.shared.getUserData(for: uid, callback: getUserDataCallback)
         }
     }
 }
