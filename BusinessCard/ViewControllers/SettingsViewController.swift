@@ -18,7 +18,6 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var dpImageView: UIImageView!
     @IBOutlet weak var emailIDTextField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var phoneNumberField: UITextField!
     @IBOutlet weak var jobTitleField: UITextField!
     @IBOutlet weak var linkedInUrl: UITextField!
@@ -41,14 +40,6 @@ class SettingsViewController: UIViewController {
             errorMessage += " Email ID not valid"
         }
         
-        if let pass = passwordField.text {
-            if( !pass.isEmpty){
-                if(!RegisterViewController.isPasswordValid(pass)){
-                    errorMessage += " Password is not strong enough"
-                }
-            }
-        }
-        
         guard let name = nameField.text else {
             errorMessage += " Name is empty"
             errorField.text = errorMessage
@@ -61,20 +52,6 @@ class SettingsViewController: UIViewController {
         let jobTitle = jobTitleField.text ?? ""
         
         if(errorMessage.isEmpty || errorMessage == "") {
-            
-            
-            AppManager.shared.db = Firestore.firestore()
-                
-            if let pass = passwordField.text {
-                if( !pass.isEmpty){
-                    Auth.auth().currentUser?.updatePassword(to: pass, completion: {(error) in
-                        if(error != nil){
-                            self.errorField.text = "Password update failed"
-                            return
-                        }
-                    })
-                }
-            }
             
             if let email = emailIDTextField.text{
                 if(!email.isEmpty){
