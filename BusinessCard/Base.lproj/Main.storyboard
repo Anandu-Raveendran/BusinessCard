@@ -539,6 +539,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="bT9-CO-qlf"/>
+                    <connections>
+                        <segue destination="BjU-D8-I3K" kind="show" identifier="listToContactDetails" id="S1y-Hz-YQC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLw-OD-Z81" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -936,6 +939,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="FUD-MJ-aLo"/>
         <segue reference="MZ1-if-NQs"/>
+        <segue reference="S1y-Hz-YQC"/>
         <segue reference="EFo-JD-NyT"/>
         <segue reference="rYJ-TX-q0C"/>
     </inferredMetricsTieBreakers>

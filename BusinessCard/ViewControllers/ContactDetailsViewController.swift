@@ -46,7 +46,7 @@ class ContactDetailsViewController: UIViewController {
     @IBAction func AddToContactBtnAction(_ sender: Any) {
         //Add contacts to mycontact list
         AppManager.shared.getContactsFirebase(for_uid: AppManager.shared.loggedInUID!, callback: nil)
-        AppManager.shared.addContactFirebase(for_uid: AppManager.shared.loggedInUID!, callback: nil)
+        AppManager.shared.addContactFirebase(for_uid: uid!, callback: nil)
         if let data = userDetails{
             AppManager.shared.database.saveContact(uid: data.uid,
                                                    name: data.name ,
@@ -55,7 +55,7 @@ class ContactDetailsViewController: UIViewController {
                                                    companyUrl: data.company_website,
                                                    linkedIn: data.linkedIn,
                                                    job_title: data.job_title,
-                                                   image: profilePic.image?.jpegData(compressionQuality: 1) ?? Data())
+                                                   image: profilePic.image?.jpegData(compressionQuality: 1))
         }
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -69,17 +69,23 @@ class ContactDetailsViewController: UIViewController {
             return
         }
 
+        print("Called from is \(calledFrom)")
+        
         if let calledFrom = calledFrom {
             if(calledFrom == "GuestViewController"){
                 AddToContactBtn.isEnabled = false
-            }
-            if(calledFrom == "HomeViewController"){
+            } else if(calledFrom == "HomeViewController"){
                 AddToContactBtn.isEnabled = true
             }
         }
-        AppManager.shared.getUserDataFireBase(for: code, callback: getUserDataCallback)
-        AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
-        
+        if(calledFrom == "ContactListTableViewController"){
+           AddToContactBtn.isEnabled = true
+            AddToContactBtn.title = "Edit"
+            AppManager.shared.database.fetchContact(uid: uid!)
+        } else{
+            AppManager.shared.getUserDataFireBase(for: code, callback: getUserDataCallback)
+            AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
+        }
         self.hideKeyboardWhenTappedAround()
     }
 

@@ -20,7 +20,30 @@ class DataSource {
         return contacts
     }
     
-    func saveContact(uid:String, name:String, phone:Int64, email:String, companyUrl:String, linkedIn:String, job_title:String, image:Data)->Bool{
+    func fetchContact(uid:String) -> Contact?{
+        let request = Contact.fetchRequest() as NSFetchRequest<Contact>
+        request.predicate = NSPredicate(format: "uid == %@ ", uid)
+       
+        do{
+            contacts = try context.fetch(request)
+            print("Got local data of Count: \(String(describing: contacts?.count)) with uid \(uid)")
+        } catch{
+            print("Error getting contacts data with uid \(uid)")
+        }
+        return contacts?[0]
+    }
+    
+    func saveContact(uid:String, name:String, phone:Int64, email:String, companyUrl:String, linkedIn:String, job_title:String, image:Data?)->Bool{
+        
+        //check if already exists in contactlist
+        contacts?.forEach{ ele in
+            if(ele.uid == uid){
+                print("Contact already in list")
+                return
+            
+            }
+        }
+        
         
         let data = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: context) as! Contact
        

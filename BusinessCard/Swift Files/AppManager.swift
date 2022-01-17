@@ -134,9 +134,9 @@ class AppManager {
     func addContactFirebase(for_uid:String, callback:(()->())?){
         if let loggedInUID = loggedInUID {
             
-            if contactList.isEmpty {
+            if !contactList.isEmpty {
                 
-                let docRef = db.collection("contactlist").document(for_uid)
+                let docRef = db.collection("contactlist").document(loggedInUID)
                 docRef.getDocument{
                     (document, error) in
                     

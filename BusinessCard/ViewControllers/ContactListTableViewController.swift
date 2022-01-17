@@ -12,6 +12,8 @@ import Firebase
 class ContactListTableViewController: UITableViewController {
 
     var contacts:[Contact] = [Contact]()
+    var selectedContactUid:String? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -39,10 +41,29 @@ class ContactListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseidentifier", for: indexPath) as! ContactListTableViewCell
         cell.nameText.text = contacts[indexPath.row].name
         cell.phone.text = String(contacts[indexPath.row].phone)
-        cell.dpImageView?.image = UIImage(data: contacts[indexPath.row].image ?? Data())
+        if let data = contacts[indexPath.row].image{
+            cell.dpImageView?.image = UIImage(data: data)
+        } else {
+            print("Img data is null")
+        }
        
         
         return cell
     }
-   
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "listToContactDetails", sender: nil)
+        selectedContactUid = contacts[indexPath.row].uid
+        print("perform segue called")
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          print("prepare called")
+        if(segue.identifier == "listToContactDetails"){
+            let dest = segue.destination as! ContactDetailsViewController
+            dest.calledFrom = "ContactListTableViewController"
+            print("called from is set to \(dest.calledFrom)")
+            dest.uid = selectedContactUid
+        } else {print("identifier is not listToContactDetails")}
+    }
+
 }
