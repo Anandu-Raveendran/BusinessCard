@@ -26,7 +26,6 @@ class EditContactViewController: UIViewController {
     @IBOutlet weak var linkedIn: UITextField!
   
     @IBAction func SaveContactBtn(_ sender: UIButton) {
-        
     }
     
     @IBAction func DeleteContactBtn(_ sender: UIButton) {
