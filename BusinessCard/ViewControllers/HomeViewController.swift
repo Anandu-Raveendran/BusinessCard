@@ -88,6 +88,7 @@ class HomeViewController: UIViewController {
         } else if(segue.identifier == "toSettings"){
             let dest = segue.destination as! SettingsViewController
             dest.callback = dataUpdateDone
+            dest.imgUploadCallback = imgUploadCallback
         }
     }
     func QRCodeScannerCallback(code:String){
@@ -99,6 +100,13 @@ class HomeViewController: UIViewController {
             AppManager.shared.getUserDataFireBase(for: uid, callback: getUserDataCallback)
         }
     }
+    func imgUploadCallback(){
+        print("imageUpdateDone called")
+        if let uid = AppManager.shared.loggedInUID {
+            DPimage.image = AppManager.shared.dpImage
+        }
+    }
+
 }
 
 

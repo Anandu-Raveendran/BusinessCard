@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController {
     private let storage = Storage.storage().reference()
     private var image:UIImage? = nil
     var callback:(()->())? = nil
+    var imgUploadCallback:(()->())? = nil
     
     @IBOutlet weak var dpImageView: UIImageView!
     @IBOutlet weak var emailIDTextField: UITextField!
@@ -78,9 +79,9 @@ class SettingsViewController: UIViewController {
                         print("User data create error \(String(describing: error?.localizedDescription))")
                     }
                 }
-            if let callback = callback {
-                callback()
-            }
+//            if let callback = callback {
+//                callback()
+//            }
             dismiss(animated: true)
             navigationController?.popViewController(animated: true)
             
@@ -162,8 +163,11 @@ extension SettingsViewController : UIImagePickerControllerDelegate, UINavigation
                 print("upload error occured")
                 return
             }
-            
-           
+            print("image saved to shared mem")
+            AppManager.shared.dpImage = self.image
+            if let callback = self.imgUploadCallback {
+                callback()
+            }
         })
         uploadTask.observe(.failure) {(storageTaskSnapshot) in
             
