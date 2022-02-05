@@ -294,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALe-3W-nyF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4122" y="-251"/>
+            <point key="canvasLocation" x="2954" y="-76"/>
         </scene>
         <!--Contact Details-->
         <scene sceneID="n1i-FV-8co">
@@ -401,8 +401,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hj5-pk-BiN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lig-VN-cOc">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
-            <point key="canvasLocation" x="4857" y="-251"/>
+            <point key="canvasLocation" x="3817" y="-76"/>
         </scene>
         <!--Home -->
         <scene sceneID="D2u-gd-EaS">
@@ -525,7 +529,7 @@
             </objects>
             <point key="canvasLocation" x="1834.7826086956522" y="-662.27678571428567"/>
         </scene>
-        <!--Contact List Table View Controller-->
+        <!--Contact list-->
         <scene sceneID="jQ5-cp-ajy">
             <objects>
                 <tableViewController id="h6q-Lm-kcK" customClass="ContactListTableViewController" customModule="BusinessCard" customModuleProvider="target" sceneMemberID="viewController">
@@ -538,14 +542,14 @@
                             <outlet property="delegate" destination="h6q-Lm-kcK" id="Q47-Ld-26h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="bT9-CO-qlf"/>
+                    <navigationItem key="navigationItem" title="Contact list" id="bT9-CO-qlf"/>
                     <connections>
-                        <segue destination="BjU-D8-I3K" kind="show" identifier="listToContactDetails" id="S1y-Hz-YQC"/>
+                        <segue destination="PII-nO-WpW" kind="show" identifier="listToContactDetails" id="Yyc-v3-mYw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLw-OD-Z81" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2622" y="-436"/>
+            <point key="canvasLocation" x="4487" y="-618"/>
         </scene>
         <!--Settings-->
         <scene sceneID="cdY-3F-fYU">
@@ -753,6 +757,125 @@
             </objects>
             <point key="canvasLocation" x="3443" y="-1313"/>
         </scene>
+        <!--Edit Contact View Controller-->
+        <scene sceneID="X7g-kL-ppN">
+            <objects>
+                <viewController id="PII-nO-WpW" customClass="EditContactViewController" customModule="BusinessCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1hh-lB-shH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QRimage" translatesAutoresizingMaskIntoConstraints="NO" id="4GF-Ie-4aO">
+                                <rect key="frame" x="112.66666666666669" y="118" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="RTm-zs-USx"/>
+                                    <constraint firstAttribute="height" constant="150" id="old-Zg-8NV"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dpimage" translatesAutoresizingMaskIntoConstraints="NO" id="fLq-29-GRV">
+                                <rect key="frame" x="20" y="288" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="DU2-tu-ko5"/>
+                                    <constraint firstAttribute="height" constant="100" id="Hhd-Qd-mhu"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YGN-vL-goH">
+                                <rect key="frame" x="130" y="298" width="225" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Pt-eM-akS">
+                                <rect key="frame" x="130" y="342" width="225" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dl3-0I-FjD">
+                                <rect key="frame" x="20" y="398" width="335" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PDm-eQ-GsG">
+                                <rect key="frame" x="20" y="452" width="335" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AX1-1R-b21">
+                                <rect key="frame" x="20" y="511" width="335" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LinkedIn Url" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wND-pY-jLD">
+                                <rect key="frame" x="20" y="555" width="335" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWC-Uj-TR2">
+                                <rect key="frame" x="234" y="609" width="121" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete Contact"/>
+                                <connections>
+                                    <action selector="DeleteContactBtn:" destination="PII-nO-WpW" eventType="touchUpInside" id="8u6-8C-hID"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DJ0-tw-3KV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wND-pY-jLD" firstAttribute="top" secondItem="AX1-1R-b21" secondAttribute="bottom" constant="10" id="1g3-m3-BRj"/>
+                            <constraint firstItem="4GF-Ie-4aO" firstAttribute="centerX" secondItem="1hh-lB-shH" secondAttribute="centerX" id="27Q-Ql-i2M"/>
+                            <constraint firstItem="YGN-vL-goH" firstAttribute="top" secondItem="4GF-Ie-4aO" secondAttribute="bottom" constant="30" id="3VX-tf-vuZ"/>
+                            <constraint firstItem="4GF-Ie-4aO" firstAttribute="top" secondItem="DJ0-tw-3KV" secondAttribute="top" constant="30" id="540-lN-ejH"/>
+                            <constraint firstItem="DJ0-tw-3KV" firstAttribute="trailing" secondItem="YGN-vL-goH" secondAttribute="trailing" constant="20" id="6yl-cG-9g5"/>
+                            <constraint firstItem="UWC-Uj-TR2" firstAttribute="top" secondItem="wND-pY-jLD" secondAttribute="bottom" constant="20" id="Bh0-bb-TCc"/>
+                            <constraint firstItem="Dl3-0I-FjD" firstAttribute="leading" secondItem="DJ0-tw-3KV" secondAttribute="leading" constant="20" id="Bng-bg-GSw"/>
+                            <constraint firstItem="fLq-29-GRV" firstAttribute="top" secondItem="4GF-Ie-4aO" secondAttribute="bottom" constant="20" id="JQl-qm-6BI"/>
+                            <constraint firstItem="fLq-29-GRV" firstAttribute="leading" secondItem="DJ0-tw-3KV" secondAttribute="leading" constant="20" id="NdZ-RY-jwv"/>
+                            <constraint firstItem="YGN-vL-goH" firstAttribute="leading" secondItem="fLq-29-GRV" secondAttribute="trailing" constant="10" id="Nvl-L6-zcN"/>
+                            <constraint firstItem="PDm-eQ-GsG" firstAttribute="leading" secondItem="DJ0-tw-3KV" secondAttribute="leading" constant="20" id="PDU-VE-Fz5"/>
+                            <constraint firstItem="DJ0-tw-3KV" firstAttribute="trailing" secondItem="Dl3-0I-FjD" secondAttribute="trailing" constant="20" id="Rcb-AQ-jjc"/>
+                            <constraint firstItem="wND-pY-jLD" firstAttribute="leading" secondItem="DJ0-tw-3KV" secondAttribute="leading" constant="20" id="WP1-hg-bBT"/>
+                            <constraint firstItem="DJ0-tw-3KV" firstAttribute="trailing" secondItem="UWC-Uj-TR2" secondAttribute="trailing" constant="20" id="WzB-kF-E3i"/>
+                            <constraint firstItem="PDm-eQ-GsG" firstAttribute="top" secondItem="Dl3-0I-FjD" secondAttribute="bottom" constant="20" id="XjQ-yC-oeh"/>
+                            <constraint firstItem="DJ0-tw-3KV" firstAttribute="trailing" secondItem="5Pt-eM-akS" secondAttribute="trailing" constant="20" id="ZQY-SP-qR4"/>
+                            <constraint firstItem="5Pt-eM-akS" firstAttribute="leading" secondItem="fLq-29-GRV" secondAttribute="trailing" constant="10" id="anZ-EA-7sh"/>
+                            <constraint firstItem="5Pt-eM-akS" firstAttribute="top" secondItem="YGN-vL-goH" secondAttribute="bottom" constant="10" id="f3N-Cb-SLw"/>
+                            <constraint firstItem="DJ0-tw-3KV" firstAttribute="trailing" secondItem="PDm-eQ-GsG" secondAttribute="trailing" constant="20" id="myW-Ub-d8Q"/>
+                            <constraint firstItem="AX1-1R-b21" firstAttribute="top" secondItem="PDm-eQ-GsG" secondAttribute="bottom" constant="25" id="nc4-QJ-ZPh"/>
+                            <constraint firstItem="DJ0-tw-3KV" firstAttribute="trailing" secondItem="wND-pY-jLD" secondAttribute="trailing" constant="20" id="ngp-9v-snQ"/>
+                            <constraint firstItem="DJ0-tw-3KV" firstAttribute="trailing" secondItem="AX1-1R-b21" secondAttribute="trailing" constant="20" id="oeh-Cl-1Zc"/>
+                            <constraint firstItem="AX1-1R-b21" firstAttribute="leading" secondItem="DJ0-tw-3KV" secondAttribute="leading" constant="20" id="wBP-62-lkw"/>
+                            <constraint firstItem="Dl3-0I-FjD" firstAttribute="top" secondItem="fLq-29-GRV" secondAttribute="bottom" constant="10" id="xpr-Jm-wTs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bqx-Gl-g85">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="U78-xC-MXK">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mgb-IZ-1O6">
+                                <rect key="frame" x="276" y="5" width="83" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="DeleteContactBtn:" destination="PII-nO-WpW" eventType="touchUpInside" id="psn-dM-kYv"/>
+                                    <action selector="SaveContactBtn:" destination="PII-nO-WpW" eventType="touchUpInside" id="ZNE-Ch-lzs"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="DpImage" destination="fLq-29-GRV" id="4cq-On-eiL"/>
+                        <outlet property="QRCodeImage" destination="4GF-Ie-4aO" id="yZc-r6-dmC"/>
+                        <outlet property="companyWebsite" destination="AX1-1R-b21" id="Ltm-GW-eof"/>
+                        <outlet property="email" destination="Dl3-0I-FjD" id="dEA-LK-ckd"/>
+                        <outlet property="jobTitle" destination="PDm-eQ-GsG" id="sWG-VK-Xtq"/>
+                        <outlet property="linkedIn" destination="wND-pY-jLD" id="JRR-V1-Pwt"/>
+                        <outlet property="name" destination="YGN-vL-goH" id="957-eU-L1i"/>
+                        <outlet property="phone" destination="5Pt-eM-akS" id="zy0-kR-ICg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QS8-a7-MO2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5391" y="-618"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="gWW-WB-JBE">
             <objects>
@@ -939,11 +1062,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="FUD-MJ-aLo"/>
         <segue reference="MZ1-if-NQs"/>
-        <segue reference="S1y-Hz-YQC"/>
         <segue reference="EFo-JD-NyT"/>
         <segue reference="rYJ-TX-q0C"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Dpimage" width="128" height="128"/>
+        <image name="QRimage" width="128" height="128"/>
         <image name="camera.metering.none" catalog="system" width="128" height="93"/>
         <image name="etting" width="128" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>

@@ -25,6 +25,16 @@ class UserDataDao :NSObject{
         self.job_title = job
         self.linkedIn = linkedIn
     }
+    init(contact:Contact){
+        self.uid = contact.uid!
+        self.name = contact.name!
+        self.phone = contact.phone
+        self.job_title = contact.job_title!
+        self.company_website = contact.companyUrl!
+        self.linkedIn = contact.linkedInUrl!
+        self.email = contact.email!
+            
+    }
     
     override init() {
         self.uid = ""

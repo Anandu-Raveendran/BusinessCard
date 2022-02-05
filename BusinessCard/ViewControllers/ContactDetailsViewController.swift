@@ -63,11 +63,6 @@ class ContactDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let code = uid else {
-  
-            print("Error QR code is empty")
-            return
-        }
 
         print("Called from is \(calledFrom)")
         
@@ -78,17 +73,16 @@ class ContactDetailsViewController: UIViewController {
                 AddToContactBtn.isEnabled = true
             }
         }
-        if(calledFrom == "ContactListTableViewController"){
-           AddToContactBtn.isEnabled = true
-            AddToContactBtn.title = "Edit"
-            AppManager.shared.database.fetchContact(uid: uid!)
-        } else{
+        
+            guard let code = uid else {
+                print("Error QR code is empty")
+                return
+            }
             AppManager.shared.getUserDataFireBase(for: code, callback: getUserDataCallback)
             AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
-        }
+        
         self.hideKeyboardWhenTappedAround()
     }
-
 
     func gotImageCallback(imageData:Data?){
         if let imageData = imageData {
@@ -99,7 +93,11 @@ class ContactDetailsViewController: UIViewController {
     func getUserDataCallback(contact:UserDataDao){
                
         userDetails = contact
-                
+        updateUIData(contact: contact)
+    }
+
+    func updateUIData(contact:UserDataDao){
+            
         self.nameText?.text = contact.name
         self.phoneText?.text = String(contact.phone)
         self.jobTitle?.text = contact.job_title
@@ -108,7 +106,7 @@ class ContactDetailsViewController: UIViewController {
         self.emailIDText?.text = contact.email
                                 
     }
-    
+
 }
 extension ContactDetailsViewController {
     func hideKeyboardWhenTappedAround() {

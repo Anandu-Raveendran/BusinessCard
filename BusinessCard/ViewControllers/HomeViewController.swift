@@ -28,8 +28,8 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         print("View did Appear in Home")
         
-        if let uid = AppManager.shared.loggedInUID { // set the logged in used uid as the QR code data
-            QRCodeImageView.image = generateQRCode(from: uid)
+        if let uid = AppManager.shared.loggedInUID { // set the logged ßin used uid as the QR code data
+            QRCodeImageView.image = HomeViewController.generateQRCode(from: uid)
             
             AppManager.shared.getUserDataFireBase(for: uid, callback: getUserDataCallback)
             AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
@@ -63,10 +63,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    
-    
-    
-    func generateQRCode(from string: String) -> UIImage? {
+    public static func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
         if let QRFilter = CIFilter(name: "CIQRCodeGenerator") {
             QRFilter.setValue(data, forKey: "inputMessage")
