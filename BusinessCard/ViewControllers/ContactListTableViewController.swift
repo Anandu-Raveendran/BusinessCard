@@ -44,6 +44,7 @@ class ContactListTableViewController: UITableViewController {
         cell.phone.text = String(contacts[indexPath.row].phone)
         if let data = contacts[indexPath.row].image{
             cell.dpImageView?.image = UIImage(data: data)
+            print("Image is set for name \(contacts[indexPath.row].name)")
         } else {
             print("Img data is null")
         }

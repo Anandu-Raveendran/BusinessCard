@@ -26,10 +26,16 @@ class EditContactViewController: UIViewController {
     @IBOutlet weak var linkedIn: UITextField!
   
     @IBAction func SaveContactBtn(_ sender: UIButton) {
+        contact?.name = name.text
+        contact?.email = email.text
+        contact?.phone = Int64(phone.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0") ?? 0
+        if let contact = contact, let sindex = selectedIndex{
+            AppManager.shared.database.update(data:contact, index:sindex)
+        }
     }
     
     @IBAction func DeleteContactBtn(_ sender: UIButton) {
-        AppManager.shared.database.delete(data: contact!, index: selectedIndex!)
+       AppManager.shared.database.delete(data: contact!, index: selectedIndex!)
     }
     
     override func viewDidLoad() {
@@ -37,7 +43,7 @@ class EditContactViewController: UIViewController {
 
         QRCodeImage.image = HomeViewController.generateQRCode(from: uid!)
         
-        let contact = AppManager.shared.database.fetchContact(uid: uid!)
+        contact = AppManager.shared.database.fetchContact(uid: uid!)
         if let contact = contact{
             updateUIData(contact: contact)
         } else {

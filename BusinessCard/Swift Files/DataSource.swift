@@ -80,6 +80,7 @@ class DataSource {
     }
     
     func update(data:Contact, index:Int) -> Bool{
+        print("Update contact at index \(index) contact size \(contacts?.count)")
         contacts?[index] = data
         do{
             try context?.save()

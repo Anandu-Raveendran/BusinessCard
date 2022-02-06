@@ -855,7 +855,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
-                                    <action selector="DeleteContactBtn:" destination="PII-nO-WpW" eventType="touchUpInside" id="psn-dM-kYv"/>
                                     <action selector="SaveContactBtn:" destination="PII-nO-WpW" eventType="touchUpInside" id="ZNE-Ch-lzs"/>
                                 </connections>
                             </button>
