@@ -8,6 +8,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
+import Network
 
 class HomeViewController: UIViewController {
     
@@ -27,6 +28,20 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         print("View did Appear in Home")
+        
+        let monitor = NWPathMonitor()
+        
+        monitor.pathUpdateHandler = { Path in
+            if Path.status == .satisfied {
+                print("We are connected")
+            } else {
+                print("Not Connected")
+            }
+        }
+        
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
+        
         
         if let uid = AppManager.shared.loggedInUID { // set the logged ßin used uid as the QR code data
             QRCodeImageView.image = HomeViewController.generateQRCode(from: uid)
