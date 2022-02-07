@@ -68,8 +68,18 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        let phone = Int(phoneNumberField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0")
+        let phoneStr = phoneNumberField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0"
+        if(!RegisterViewController.isPhoneValid(phoneStr)){
+            errorMessage += " Phone number is not valid"
+            errorField.text = errorMessage
+            print(errorMessage)
+            return
+        } else {
+            print("Phone number is valid")
+        }
         
+        let phone = Int(phoneStr)
+                
         let linkedIn = linkedInUrl.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let company_website = companyUrlField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let jobTitle = jobTitleField.text ?? ""
@@ -147,6 +157,30 @@ class RegisterViewController: UIViewController {
             let regex = try NSRegularExpression(pattern: passRegx)
             let nsString = pass as NSString
             let results = regex.matches(in: pass, range: NSRange(location: 0, length: nsString.length))
+            
+            if results.count == 0
+            {
+                returnValue = false
+            }
+            
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            returnValue = false
+        }
+        
+        return  returnValue
+    }
+   
+    static func isPhoneValid(_ phone:String) -> Bool{
+        
+        let passRegx = "^[0-9+]{0,1}+[0-9]{5,16}$"
+        
+        var returnValue = true
+        
+        do {
+            let regex = try NSRegularExpression(pattern: passRegx)
+            let nsString = phone as NSString
+            let results = regex.matches(in: phone, range: NSRange(location: 0, length: nsString.length))
             
             if results.count == 0
             {
