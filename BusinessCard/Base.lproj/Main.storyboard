@@ -910,7 +910,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Od4-lk-YTJ">
-                                <rect key="frame" x="40" y="692" width="295" height="36"/>
+                                <rect key="frame" x="40" y="673" width="295" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
@@ -971,7 +971,6 @@
                             <constraint firstItem="NAG-k0-cEv" firstAttribute="leading" secondItem="vFf-Sp-mzw" secondAttribute="leading" constant="20" id="Eum-dg-lSp"/>
                             <constraint firstItem="aKc-N7-H9f" firstAttribute="top" secondItem="CCJ-y8-EPW" secondAttribute="bottom" constant="20" id="Fd4-cp-6YO"/>
                             <constraint firstItem="9ql-G4-17c" firstAttribute="centerX" secondItem="Gtz-Pl-hGk" secondAttribute="centerX" id="Fwa-RP-sds"/>
-                            <constraint firstItem="vFf-Sp-mzw" firstAttribute="bottom" secondItem="Od4-lk-YTJ" secondAttribute="bottom" constant="50" id="FxV-gr-LN7"/>
                             <constraint firstItem="Od4-lk-YTJ" firstAttribute="leading" secondItem="vFf-Sp-mzw" secondAttribute="leading" constant="40" id="G89-wt-7rj"/>
                             <constraint firstItem="vFf-Sp-mzw" firstAttribute="trailing" secondItem="89m-pM-nEr" secondAttribute="trailing" constant="40" id="JP9-5M-HYQ"/>
                             <constraint firstItem="NAG-k0-cEv" firstAttribute="centerX" secondItem="Gtz-Pl-hGk" secondAttribute="centerX" id="NdB-kI-dKr"/>
@@ -998,6 +997,7 @@
                             <constraint firstItem="vFf-Sp-mzw" firstAttribute="trailing" secondItem="DcK-yA-xkm" secondAttribute="trailing" constant="40" id="pkC-kR-5ZM"/>
                             <constraint firstItem="DcK-yA-xkm" firstAttribute="centerX" secondItem="Gtz-Pl-hGk" secondAttribute="centerX" id="t9J-DI-gHD"/>
                             <constraint firstItem="Od4-lk-YTJ" firstAttribute="centerX" secondItem="Gtz-Pl-hGk" secondAttribute="centerX" id="v1I-aD-ncR"/>
+                            <constraint firstItem="Od4-lk-YTJ" firstAttribute="top" secondItem="DcK-yA-xkm" secondAttribute="bottom" constant="20" id="vGu-oW-R7u"/>
                             <constraint firstItem="vFf-Sp-mzw" firstAttribute="trailing" secondItem="9ql-G4-17c" secondAttribute="trailing" constant="40" id="x2d-NN-jXl"/>
                             <constraint firstItem="89m-pM-nEr" firstAttribute="centerX" secondItem="Gtz-Pl-hGk" secondAttribute="centerX" id="xL3-3W-Zah"/>
                             <constraint firstItem="yyV-dc-dSW" firstAttribute="centerX" secondItem="Gtz-Pl-hGk" secondAttribute="centerX" id="yqR-bq-NeQ"/>

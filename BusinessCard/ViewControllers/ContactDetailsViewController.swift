@@ -49,7 +49,7 @@ class ContactDetailsViewController: UIViewController {
         AppManager.shared.addContactFirebase(for_uid: uid!, callback: nil)
         if let data = userDetails{
             AppManager.shared.database.saveContact(uid: data.uid,
-                                                   name: data.name ,
+                                                   name: data.name ,		
                                                    phone: data.phone,
                                                    email: data.email,
                                                    companyUrl: data.company_website,
