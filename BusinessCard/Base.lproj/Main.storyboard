@@ -401,10 +401,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hj5-pk-BiN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lig-VN-cOc">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
             </objects>
             <point key="canvasLocation" x="3817" y="-76"/>
         </scene>
@@ -443,7 +439,7 @@
                                     <imageReference key="image" image="person.fill" catalog="system" symbolScale="large" renderingMode="template"/>
                                 </state>
                                 <connections>
-                                    <segue destination="h6q-Lm-kcK" kind="show" id="MT4-dJ-oHZ"/>
+                                    <segue destination="Zwm-n0-dg3" kind="show" id="nNh-zW-m6i"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My QR Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9X-KA-1p6">
@@ -528,28 +524,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcL-Vb-Ucv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1834.7826086956522" y="-662.27678571428567"/>
-        </scene>
-        <!--Contact list-->
-        <scene sceneID="jQ5-cp-ajy">
-            <objects>
-                <tableViewController id="h6q-Lm-kcK" customClass="ContactListTableViewController" customModule="BusinessCard" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="KqZ-0h-oJR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="h6q-Lm-kcK" id="n6m-iP-HBf"/>
-                            <outlet property="delegate" destination="h6q-Lm-kcK" id="Q47-Ld-26h"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Contact list" id="bT9-CO-qlf"/>
-                    <connections>
-                        <segue destination="PII-nO-WpW" kind="show" identifier="listToContactDetails" id="Yyc-v3-mYw"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MLw-OD-Z81" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4487" y="-618"/>
         </scene>
         <!--Settings-->
         <scene sceneID="cdY-3F-fYU">
@@ -756,6 +730,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJH-Yd-2Zl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3443" y="-1313"/>
+        </scene>
+        <!--Contact List-->
+        <scene sceneID="b64-v8-3xM">
+            <objects>
+                <viewController id="Zwm-n0-dg3" customClass="ContactListTableViewController" customModule="BusinessCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cpj-Se-zAN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aLj-MW-BM4">
+                                <rect key="frame" x="10" y="88" width="355" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KQk-FT-j3n">
+                                <rect key="frame" x="0.0" y="139" width="375" height="639"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="I3x-TK-dZI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="I3x-TK-dZI" firstAttribute="bottom" secondItem="KQk-FT-j3n" secondAttribute="bottom" id="95i-Qc-Bqk"/>
+                            <constraint firstItem="I3x-TK-dZI" firstAttribute="trailing" secondItem="KQk-FT-j3n" secondAttribute="trailing" id="U0u-QI-OK3"/>
+                            <constraint firstAttribute="trailing" secondItem="aLj-MW-BM4" secondAttribute="trailing" constant="10" id="fhS-Bm-BfS"/>
+                            <constraint firstItem="aLj-MW-BM4" firstAttribute="leading" secondItem="I3x-TK-dZI" secondAttribute="leading" constant="10" id="gnw-xI-YT3"/>
+                            <constraint firstItem="KQk-FT-j3n" firstAttribute="leading" secondItem="Cpj-Se-zAN" secondAttribute="leading" id="hPr-bC-6Lg"/>
+                            <constraint firstItem="aLj-MW-BM4" firstAttribute="top" secondItem="I3x-TK-dZI" secondAttribute="top" id="kZ9-Ay-cyi"/>
+                            <constraint firstItem="KQk-FT-j3n" firstAttribute="top" secondItem="aLj-MW-BM4" secondAttribute="bottom" id="nBt-D7-UGY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contact List" id="tL0-Io-NO3"/>
+                    <connections>
+                        <outlet property="searchBar" destination="aLj-MW-BM4" id="HK9-ER-aGV"/>
+                        <outlet property="tableView" destination="KQk-FT-j3n" id="5kz-zf-8EZ"/>
+                        <segue destination="PII-nO-WpW" kind="show" identifier="listToContactDetails" id="Jq9-yx-03j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kS1-HC-9NN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4505" y="-599"/>
         </scene>
         <!--Edit Contact View Controller-->
         <scene sceneID="X7g-kL-ppN">

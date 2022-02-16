@@ -9,15 +9,22 @@ import UIKit
 import FirebaseFirestore
 import Firebase
 
-class ContactListTableViewController: UITableViewController {
+class ContactListTableViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
     var contacts:[Contact] = [Contact]()
     var selectedContactUid:String? = nil
     var selectedIndex:Int? = nil
     
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+
+        tableView.delegate = self
+        searchBar.delegate = self
+        tableView.dataSource = self
+        
         let nib = UINib(nibName: "ContactListTableViewCell", bundle: nil)
         tableView.register( nib, forCellReuseIdentifier: "reuseidentifier")
         
@@ -26,18 +33,20 @@ class ContactListTableViewController: UITableViewController {
             //No contacts in local db hence fetch from firebase
             print("Local Db is empty")
             AppManager.shared.getContactsFirebase(for_uid: AppManager.shared.loggedInUID!, callback: nil)
+        
         } else {
             print("Local Db is not empty")
         }
+        tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Table elements \(contacts.count)")
         return contacts.count
     }
 
    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("Building cell \(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseidentifier", for: indexPath) as! ContactListTableViewCell
         cell.nameText.text = contacts[indexPath.row].name
@@ -53,7 +62,7 @@ class ContactListTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedContactUid = contacts[indexPath.row].uid
         selectedIndex = indexPath.row
         print("perform segue called")
@@ -67,6 +76,24 @@ class ContactListTableViewController: UITableViewController {
             dest.selectedIndex = selectedIndex
         } else {print("identifier is not listToContactDetails")}
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("\(searchText)")
+        contacts = AppManager.shared.database.fetchContacts(filter: searchText) ?? [Contact]()
+        tableView.reloadData()
+
+    }
 
 }
 
+extension ContactListTableViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
