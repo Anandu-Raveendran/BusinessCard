@@ -498,7 +498,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home " id="BRd-5S-arw">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" image="etting" style="plain" id="Hlg-Xz-Az0">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gearshape" catalog="system" style="plain" id="Hlg-Xz-Az0">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ylo-uN-db6">
                                 <rect key="frame" x="332" y="8.6666666666666643" width="27" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1082,7 +1082,6 @@
         <image name="Dpimage" width="128" height="128"/>
         <image name="QRimage" width="128" height="128"/>
         <image name="camera.metering.none" catalog="system" width="128" height="93"/>
-        <image name="etting" width="128" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="labelColor">

@@ -95,6 +95,9 @@ class AppManager {
             
             if error != nil {
                 print("download error occured \(error.debugDescription)")
+                if let callback = callback {
+                    callback(nil)
+                }
                 return
             }
             
@@ -115,7 +118,7 @@ class AppManager {
     }
     
     func getContactsFirebase(for_uid:String, callback:(([String])->())?){
-        
+        print("getting contacts from firebase")
         let docRef = db.collection("contactlist").document(for_uid)
         docRef.getDocument{
             (document, error) in
@@ -123,12 +126,11 @@ class AppManager {
             if let document = document, document.exists {
                 let data = document.data()
                 AppManager.shared.contactList = data?["contacts"] as! [String]
-                if let callback = callback {
-                    callback(self.contactList)
-                }
             }
         }
-        
+        if let callback = callback {
+            callback(self.contactList)
+        }
     }
     
     func addContactFirebase(for_uid:String, callback:(()->())?){

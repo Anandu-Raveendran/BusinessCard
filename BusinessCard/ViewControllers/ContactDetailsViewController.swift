@@ -45,7 +45,7 @@ class ContactDetailsViewController: UIViewController {
     
     @IBAction func AddToContactBtnAction(_ sender: Any) {
         //Add contacts to mycontact list
-        AppManager.shared.getContactsFirebase(for_uid: AppManager.shared.loggedInUID!, callback: nil)
+       // AppManager.shared.getContactsFirebase(for_uid: AppManager.shared.loggedInUID!, callback: nil)
         AppManager.shared.addContactFirebase(for_uid: uid!, callback: nil)
         if let data = userDetails{
             AppManager.shared.database.saveContact(uid: data.uid,

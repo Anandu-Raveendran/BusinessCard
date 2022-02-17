@@ -33,6 +33,10 @@ class DataSource {
         return contacts?[0]
     }
     
+    func saveContact(userDataDao:UserDataDao, image:Data?)->Bool{
+        return saveContact(uid: userDataDao.uid, name: userDataDao.name, phone: userDataDao.phone, email: userDataDao.email, companyUrl: userDataDao.company_website, linkedIn: userDataDao.linkedIn, job_title: userDataDao.job_title, image: image)
+    }
+    
     func saveContact(uid:String, name:String, phone:Int64, email:String, companyUrl:String, linkedIn:String, job_title:String, image:Data?)->Bool{
         
         //check if already exists in contactlist
@@ -78,7 +82,11 @@ class DataSource {
             return false
         }
     }
-    
+    func update(data:Contact, uid:String){
+        if let index = contacts?.firstIndex(where: {$0.uid == uid}){
+            update(data: data, index: index)
+        }
+    }
     func update(data:Contact, index:Int) -> Bool{
         print("Update contact at index \(index) contact size \(contacts?.count)")
         contacts?[index] = data

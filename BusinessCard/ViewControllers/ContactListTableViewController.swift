@@ -14,7 +14,8 @@ class ContactListTableViewController: UIViewController, UISearchBarDelegate, UIT
     var contacts:[Contact] = [Contact]()
     var selectedContactUid:String? = nil
     var selectedIndex:Int? = nil
-    
+    var showCloudCheckDone:Bool = false // cloud backup check is finished or not
+    var showCloudAlertDone:Bool = false // Alert showing "cloud backup underway" is closed by user or not
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -32,12 +33,69 @@ class ContactListTableViewController: UIViewController, UISearchBarDelegate, UIT
         if contacts.isEmpty {
             //No contacts in local db hence fetch from firebase
             print("Local Db is empty")
-            AppManager.shared.getContactsFirebase(for_uid: AppManager.shared.loggedInUID!, callback: nil)
-        
+            getFirebaseContactBackup()
         } else {
             print("Local Db is not empty")
         }
         tableView.reloadData()
+    }
+    
+    func getFirebaseContactBackup(){
+        AppManager.shared.getContactsFirebase(for_uid: AppManager.shared.loggedInUID!, callback: { res in
+            print("Got \(res.count) contactslist uids from cloud ")
+            for uid in res {
+                AppManager.shared.getUserDataFireBase(for: uid, callback: {userDataDao in
+                    if(AppManager.shared.database.saveContact(userDataDao: userDataDao, image: nil)){
+                        print("Contact saved to database for uid \(uid)")
+                    }
+                })
+                AppManager.shared.getImageFirebase(for_uid:uid, callback: {res in
+                    if let res = res{
+                        let tempContact = AppManager.shared.database.fetchContact(uid: uid)
+                        tempContact?.image = res
+                        AppManager.shared.database.update(data:tempContact! , uid:uid)
+                        print("Image added to db for uid \(uid)")
+                        self.contacts.append(tempContact!)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                    self.showCloudCheckDone = true
+                })
+             
+            }
+            print("Cloud check done")
+            self.showCloudCheckDone = true
+    
+            if(self.showCloudCheckDone && self.showCloudAlertDone){
+                print("Cloud check status: \(self.showCloudCheckDone) and cloud alert \(self.showCloudAlertDone) ")
+                if(self.contacts.isEmpty){
+                    self.showAlert(title: "No backup in cloud", str: "No contacts were found saved in cloud backup.", completion:nil)
+                }
+            }
+        })
+        
+        showAlert(title: "Retrieving contact backup", str: "No contacts found in local cache. Trying to retrieving cloud backup", completion: {_ in
+            self.showCloudAlertDone = true
+            if(self.showCloudCheckDone == false){
+                sleep(2)
+            }
+            
+            print("After alert cloud check status \(self.showCloudCheckDone) and cloud alert \(self.showCloudAlertDone) ")
+            if(self.showCloudCheckDone && self.showCloudAlertDone){
+                if(self.contacts.isEmpty){
+                    self.showAlert(title: "No backup in cloud", str: "No contacts were found saved in cloud backup.", completion:nil)
+                }
+            }
+        })
+        
+    }
+    
+    func showAlert(title:String, str:String, completion:((UIAlertAction)->Void)?){
+        let alertView = UIAlertController(title: title, message: str, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "OK", style: .default, handler: completion))
+        
+        present(alertView, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
