@@ -26,16 +26,28 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(true)
     }
     
+    
+    func showAlert(str:String){
+        let alertView = UIAlertController(title: "Network status", message: str, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alertView, animated: true, completion: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         print("View did Appear in Home")
         
         let monitor = NWPathMonitor()
         
         monitor.pathUpdateHandler = { Path in
-            if Path.status == .satisfied {
-                print("We are connected")
+            if Path.status != .unsatisfied {
+                print("We are connected to internet")
+               
             } else {
-                print("Not Connected")
+                print("Not Connected to internet")
+                DispatchQueue.main.async {
+                    self.showAlert(str: "Internet connection not found. Some feature will not work as expected.")
+                }
             }
         }
         
