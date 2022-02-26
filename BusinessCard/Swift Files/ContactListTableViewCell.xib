@@ -17,41 +17,39 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="60D-RP-7mm">
-                        <rect key="frame" x="40" y="29.5" width="50" height="47.5"/>
-                        <color key="tintColor" systemColor="labelColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="1ED-1i-hLE"/>
-                            <constraint firstAttribute="width" constant="50" id="XG8-Ct-FJb"/>
-                            <constraint firstAttribute="width" secondItem="60D-RP-7mm" secondAttribute="height" multiplier="1:1" id="YhV-fJ-YXg"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zog-6S-oQo">
-                        <rect key="frame" x="110" y="32.5" width="190" height="21"/>
+                        <rect key="frame" x="120" y="32.5" width="180" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8J-i9-a2X">
-                        <rect key="frame" x="110" y="53.5" width="37.5" height="18"/>
+                        <rect key="frame" x="120" y="53.5" width="37.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" systemColor="secondaryLabelColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5q0-gr-uof">
+                        <rect key="frame" x="20" y="13" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="TNv-hb-iYk"/>
+                            <constraint firstAttribute="height" constant="80" id="ZGC-bW-VWF"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="60D-RP-7mm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DFP-kU-fIM"/>
-                    <constraint firstItem="60D-RP-7mm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="cNQ-g5-is5"/>
+                    <constraint firstItem="5q0-gr-uof" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="4P0-jj-QH4"/>
+                    <constraint firstItem="5q0-gr-uof" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CQL-ud-Wpw"/>
+                    <constraint firstItem="zog-6S-oQo" firstAttribute="leading" secondItem="5q0-gr-uof" secondAttribute="trailing" constant="20" id="aJm-Pc-sXe"/>
                     <constraint firstItem="Q8J-i9-a2X" firstAttribute="leading" secondItem="zog-6S-oQo" secondAttribute="leading" id="lVe-Wp-fb7"/>
                     <constraint firstItem="zog-6S-oQo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-10" id="lYa-bG-kPY"/>
                     <constraint firstItem="Q8J-i9-a2X" firstAttribute="top" secondItem="zog-6S-oQo" secondAttribute="bottom" id="oyS-Et-LzB"/>
                     <constraint firstAttribute="trailing" secondItem="zog-6S-oQo" secondAttribute="trailing" constant="20" id="sac-Vg-cgW"/>
-                    <constraint firstItem="zog-6S-oQo" firstAttribute="leading" secondItem="60D-RP-7mm" secondAttribute="trailing" constant="20" id="v7A-rp-D0F"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="imageView" destination="60D-RP-7mm" id="7Lc-8e-s6p"/>
+                <outlet property="dpImageView" destination="5q0-gr-uof" id="3UD-Fy-Ihg"/>
                 <outlet property="nameText" destination="zog-6S-oQo" id="3Gl-IS-6MR"/>
                 <outlet property="phone" destination="Q8J-i9-a2X" id="oMc-9B-FKf"/>
             </connections>
@@ -59,10 +57,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="person" catalog="system" width="128" height="117"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

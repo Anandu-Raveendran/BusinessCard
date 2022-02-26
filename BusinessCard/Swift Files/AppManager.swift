@@ -134,9 +134,11 @@ class AppManager {
     }
     
     func addContactFirebase(for_uid:String, callback:(()->())?){
+        
+        print("Add to firebase \(for_uid) to contact list of \(AppManager.shared.loggedInUID) ")
+        
         if let loggedInUID = loggedInUID {
             
-            if !contactList.isEmpty {
                 
                 let docRef = db.collection("contactlist").document(loggedInUID)
                 docRef.getDocument{
@@ -153,7 +155,6 @@ class AppManager {
                     }
                 }
             }
-        }
     }
     
     func openUrlInBrowser(for_url:String) {

@@ -519,11 +519,40 @@
                         <outlet property="QRCodeImageView" destination="sZO-Lx-LkJ" id="31E-JN-Iny"/>
                         <outlet property="email" destination="PgJ-yy-JVD" id="cYW-0k-Cz7"/>
                         <outlet property="name" destination="AsW-Tm-H7k" id="BH4-Fe-bme"/>
+                        <segue destination="ehd-t3-aRA" kind="presentation" identifier="selectTheme" modalPresentationStyle="overCurrentContext" id="uaa-U5-kOe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcL-Vb-Ucv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1834.7826086956522" y="-662.27678571428567"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qnP-2F-qIc">
+            <objects>
+                <viewController id="ehd-t3-aRA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t5x-2s-A4o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZs-Fd-10V">
+                                <rect key="frame" x="40" y="84" width="295" height="654"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ApX-Aa-rmd"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.094812925170068021" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iZs-Fd-10V" firstAttribute="leading" secondItem="ApX-Aa-rmd" secondAttribute="leading" constant="40" id="SZv-Qx-lk2"/>
+                            <constraint firstItem="ApX-Aa-rmd" firstAttribute="trailing" secondItem="iZs-Fd-10V" secondAttribute="trailing" constant="40" id="UC2-Dg-Dhr"/>
+                            <constraint firstItem="iZs-Fd-10V" firstAttribute="top" secondItem="ApX-Aa-rmd" secondAttribute="top" constant="40" id="cHc-v0-3S3"/>
+                            <constraint firstItem="ApX-Aa-rmd" firstAttribute="bottom" secondItem="iZs-Fd-10V" secondAttribute="bottom" constant="40" id="ykC-hq-PEJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="55K-Fv-9nc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ubu-wc-dJR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832.8" y="-1395.0738916256157"/>
         </scene>
         <!--Settings-->
         <scene sceneID="cdY-3F-fYU">
@@ -600,11 +629,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k07-Nk-YzD">
-                                <rect key="frame" x="30" y="677" width="140" height="31"/>
+                                <rect key="frame" x="30" y="682" width="140" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Change password"/>
                                 <connections>
                                     <segue destination="kYf-Ju-NTB" kind="show" id="Ofk-oo-oKj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CN-Oe-xIx">
+                                <rect key="frame" x="30" y="641" width="150.33333333333334" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Change user theme"/>
+                                <connections>
+                                    <segue destination="ehd-t3-aRA" kind="presentation" modalPresentationStyle="overCurrentContext" id="WHU-hx-9Sd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -619,12 +656,13 @@
                             <constraint firstItem="xW0-gr-23F" firstAttribute="leading" secondItem="qHO-YM-lau" secondAttribute="leading" constant="40" id="CQD-Ct-ZTK"/>
                             <constraint firstItem="4rK-Bc-Hen" firstAttribute="top" secondItem="BQO-Ry-Vkf" secondAttribute="bottom" constant="20" id="CbX-IA-hLZ"/>
                             <constraint firstItem="dp4-cf-13m" firstAttribute="top" secondItem="qUk-qe-thb" secondAttribute="bottom" constant="20" id="Cgp-Bz-8qp"/>
-                            <constraint firstItem="fxf-xq-6vi" firstAttribute="top" secondItem="k07-Nk-YzD" secondAttribute="bottom" constant="20" id="DyP-ts-cZA"/>
+                            <constraint firstItem="fxf-xq-6vi" firstAttribute="top" secondItem="k07-Nk-YzD" secondAttribute="bottom" constant="15" id="DyP-ts-cZA"/>
                             <constraint firstItem="qUk-qe-thb" firstAttribute="leading" secondItem="qHO-YM-lau" secondAttribute="leading" constant="40" id="Esn-r9-yOV"/>
                             <constraint firstItem="qHO-YM-lau" firstAttribute="trailing" secondItem="6An-vU-lpU" secondAttribute="trailing" constant="40" id="FG5-F1-ZYM"/>
                             <constraint firstItem="qUk-qe-thb" firstAttribute="top" secondItem="4rK-Bc-Hen" secondAttribute="bottom" constant="20" id="H0Z-Oy-MuF"/>
                             <constraint firstItem="heB-g8-31J" firstAttribute="top" secondItem="qHO-YM-lau" secondAttribute="top" constant="25" id="MOm-9t-cQc"/>
                             <constraint firstItem="fxf-xq-6vi" firstAttribute="leading" secondItem="qHO-YM-lau" secondAttribute="leading" constant="40" id="RVf-9F-x0T"/>
+                            <constraint firstItem="k07-Nk-YzD" firstAttribute="top" secondItem="5CN-Oe-xIx" secondAttribute="bottom" constant="10" id="RlC-9r-ouh"/>
                             <constraint firstItem="eGx-ov-Pvf" firstAttribute="top" secondItem="TUE-gT-nRS" secondAttribute="bottom" constant="10" id="Sjo-jY-wZw"/>
                             <constraint firstItem="heB-g8-31J" firstAttribute="centerX" secondItem="DWR-lD-IAD" secondAttribute="centerX" id="SuQ-8y-s7B"/>
                             <constraint firstItem="TUE-gT-nRS" firstAttribute="top" secondItem="heB-g8-31J" secondAttribute="bottom" id="VMl-e9-bcm"/>
@@ -637,6 +675,7 @@
                             <constraint firstItem="xW0-gr-23F" firstAttribute="top" secondItem="J01-Vv-ayu" secondAttribute="bottom" constant="20" id="a9L-bu-0D7"/>
                             <constraint firstItem="qHO-YM-lau" firstAttribute="trailing" secondItem="4rK-Bc-Hen" secondAttribute="trailing" constant="40" id="gjQ-Z4-Eek"/>
                             <constraint firstItem="qHO-YM-lau" firstAttribute="trailing" secondItem="xW0-gr-23F" secondAttribute="trailing" constant="40" id="hRw-HI-oe3"/>
+                            <constraint firstItem="5CN-Oe-xIx" firstAttribute="leading" secondItem="qHO-YM-lau" secondAttribute="leading" constant="30" id="hXU-qd-uyW"/>
                             <constraint firstItem="TUE-gT-nRS" firstAttribute="centerX" secondItem="DWR-lD-IAD" secondAttribute="centerX" id="iqc-U6-fQk"/>
                             <constraint firstItem="qHO-YM-lau" firstAttribute="bottom" secondItem="fxf-xq-6vi" secondAttribute="bottom" constant="20" id="ob4-sJ-A1V"/>
                             <constraint firstItem="J01-Vv-ayu" firstAttribute="centerX" secondItem="DWR-lD-IAD" secondAttribute="centerX" id="r1T-vF-r4k"/>
@@ -658,7 +697,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEQ-Rd-lyG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2686.9565217391305" y="-1327.2321428571429"/>
+            <point key="canvasLocation" x="2685.5999999999999" y="-1327.8325123152711"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="Lbq-N0-iVM">
@@ -1075,6 +1114,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="FUD-MJ-aLo"/>
         <segue reference="MZ1-if-NQs"/>
+        <segue reference="uaa-U5-kOe"/>
         <segue reference="EFo-JD-NyT"/>
         <segue reference="rYJ-TX-q0C"/>
     </inferredMetricsTieBreakers>
