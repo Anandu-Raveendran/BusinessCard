@@ -17,6 +17,7 @@
 		3F971B6E2762C1740031051E /* ContactListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F971B6C2762C1740031051E /* ContactListTableViewCell.swift */; };
 		3F971B6F2762C1740031051E /* ContactListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F971B6D2762C1740031051E /* ContactListTableViewCell.xib */; };
 		3F994BB527AE192300ABD0AD /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F994BB427AE192300ABD0AD /* EditContactViewController.swift */; };
+		3F9E6ECD27CA99A0000B258A /* SelectThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9E6ECC27CA99A0000B258A /* SelectThemeViewController.swift */; };
 		5F40BCDBD79845B9ABEE809A /* Pods_BusinessCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */; };
 		F922C1D22726E89F00A39554 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922C1D12726E89F00A39554 /* ScannerViewController.swift */; };
 		F922C1D52727086700A39554 /* UserDataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922C1D42727086700A39554 /* UserDataDao.swift */; };
@@ -45,6 +46,7 @@
 		3F971B6C2762C1740031051E /* ContactListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewCell.swift; sourceTree = "<group>"; };
 		3F971B6D2762C1740031051E /* ContactListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListTableViewCell.xib; sourceTree = "<group>"; };
 		3F994BB427AE192300ABD0AD /* EditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
+		3F9E6ECC27CA99A0000B258A /* SelectThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectThemeViewController.swift; sourceTree = "<group>"; };
 		BFFF18734AA1278C35B687CB /* Pods-BusinessCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCard.debug.xcconfig"; path = "Target Support Files/Pods-BusinessCard/Pods-BusinessCard.debug.xcconfig"; sourceTree = "<group>"; };
 		C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F922C1D12726E89F00A39554 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				3F82B219274AB8A300BFFC4E /* ChangePasswordViewController.swift */,
 				3F82B21B274AC22400BFFC4E /* PasswordResetViewController.swift */,
 				3F994BB427AE192300ABD0AD /* EditContactViewController.swift */,
+				3F9E6ECC27CA99A0000B258A /* SelectThemeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				F92830E02724A5650034B682 /* AppDelegate.swift in Sources */,
 				3F994BB527AE192300ABD0AD /* EditContactViewController.swift in Sources */,
 				3F971B6E2762C1740031051E /* ContactListTableViewCell.swift in Sources */,
+				3F9E6ECD27CA99A0000B258A /* SelectThemeViewController.swift in Sources */,
 				F922C1D22726E89F00A39554 /* ScannerViewController.swift in Sources */,
 				F922C1D52727086700A39554 /* UserDataDao.swift in Sources */,
 				F92830E22724A5650034B682 /* SceneDelegate.swift in Sources */,

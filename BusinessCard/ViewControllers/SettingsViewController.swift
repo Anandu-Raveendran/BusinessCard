@@ -25,8 +25,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var companyUrlField: UITextField!
     @IBOutlet weak var errorField: UILabel!
     @IBOutlet weak var nameField: UITextField!
-    
-    
+    @IBOutlet weak var themePreview: UIView!
     
     @IBAction func saveBtn(_ sender: Any) {
         var errorMessage = ""
@@ -103,6 +102,9 @@ class SettingsViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        HomeViewController.updateThemeColor(view: themePreview)
+    }
     
     override func viewDidLoad() {
         emailIDTextField.text = FirebaseAuth.Auth.auth().currentUser?.email

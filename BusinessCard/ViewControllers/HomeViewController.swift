@@ -34,6 +34,31 @@ class HomeViewController: UIViewController {
         present(alertView, animated: true, completion: nil)
     }
     
+    public static func updateThemeColor(view:UIView) {
+        let userDefaults = UserDefaults.standard
+        let colorStr = userDefaults.object(forKey: "ThemeColour") as? String
+        if let colorStr = colorStr{
+            let color:UIColor
+            print("Color set to \(colorStr)")
+            switch colorStr{
+            case "Indigo": color = UIColor.systemIndigo
+            case "Blue": color = UIColor.systemBlue
+            case "White": color = UIColor.white
+            case "Green": color = UIColor.systemGreen
+            case "Teal": color = UIColor.systemTeal
+            case "Orange": color = UIColor.systemOrange
+            case "Red": color = UIColor.systemRed
+            case "Yellow": color = UIColor.systemYellow
+            case "Pink": color = UIColor.systemPink
+            case "Brown": color = UIColor.systemBrown
+            case "Gray": color = UIColor.systemGray
+            case "Purple": color = UIColor.systemPurple
+            default:color = UIColor.systemBackground
+            }
+            view.backgroundColor = color
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         print("View did Appear in Home")
         
@@ -61,6 +86,7 @@ class HomeViewController: UIViewController {
             AppManager.shared.getUserDataFireBase(for: uid, callback: getUserDataCallback)
             AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
         }
+        HomeViewController.updateThemeColor(view: self.view)
     }
     
     func gotImageCallback(imageData:Data?){
