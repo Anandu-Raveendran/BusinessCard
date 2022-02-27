@@ -116,6 +116,17 @@ class SettingsViewController: UIViewController {
         dpImageView.image = AppManager.shared.dpImage
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "selectThemeSegue"){
+            let dest = segue.destination as! SelectThemeViewController
+            dest.callback = updateThemePreviewIcon
+        }
+    }
+    
+    func updateThemePreviewIcon() {
+        print("Updating background in callback")
+       _ = HomeViewController.updateThemeColor(view: self.themePreview)
+    }
 }
 extension SettingsViewController {
     func hideKeyboardWhenTappedAround() {

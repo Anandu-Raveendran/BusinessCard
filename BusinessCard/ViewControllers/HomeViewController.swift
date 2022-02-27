@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         present(alertView, animated: true, completion: nil)
     }
     
-    public static func updateThemeColor(view:UIView) {
+    public static func updateThemeColor(view:UIView) -> Bool {
         let userDefaults = UserDefaults.standard
         let colorStr = userDefaults.object(forKey: "ThemeColour") as? String
         if let colorStr = colorStr{
@@ -56,7 +56,9 @@ class HomeViewController: UIViewController {
             default:color = UIColor.systemBackground
             }
             view.backgroundColor = color
+            return true
         }
+        return false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,7 +88,9 @@ class HomeViewController: UIViewController {
             AppManager.shared.getUserDataFireBase(for: uid, callback: getUserDataCallback)
             AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
         }
-        HomeViewController.updateThemeColor(view: self.view)
+        if (HomeViewController.updateThemeColor(view: self.view) == false) {
+            performSegue(withIdentifier: "selectThemeSegue", sender: nil)
+        }
     }
     
     func gotImageCallback(imageData:Data?){

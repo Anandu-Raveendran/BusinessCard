@@ -519,7 +519,7 @@
                         <outlet property="QRCodeImageView" destination="sZO-Lx-LkJ" id="31E-JN-Iny"/>
                         <outlet property="email" destination="PgJ-yy-JVD" id="cYW-0k-Cz7"/>
                         <outlet property="name" destination="AsW-Tm-H7k" id="BH4-Fe-bme"/>
-                        <segue destination="ehd-t3-aRA" kind="presentation" identifier="selectTheme" modalPresentationStyle="overCurrentContext" id="uaa-U5-kOe"/>
+                        <segue destination="ehd-t3-aRA" kind="presentation" identifier="selectThemeSegue" modalPresentationStyle="overCurrentContext" id="uaa-U5-kOe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcL-Vb-Ucv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -535,16 +535,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="iZs-Fd-10V">
-                                <rect key="frame" x="40" y="84" width="295" height="654"/>
+                                <rect key="frame" x="40" y="161" width="295" height="450"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a colour for my card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErA-WH-0ot">
-                                        <rect key="frame" x="10" y="143" width="275" height="24"/>
+                                        <rect key="frame" x="10" y="61" width="275" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Rib-b0-gfy">
-                                        <rect key="frame" x="0.0" y="217" width="295" height="220"/>
+                                        <rect key="frame" x="0.0" y="135" width="295" height="220"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lin-DT-ifE">
                                                 <rect key="frame" x="10" y="0.0" width="275" height="40"/>
@@ -727,8 +727,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Rib-b0-gfy" firstAttribute="centerY" secondItem="iZs-Fd-10V" secondAttribute="centerY" id="Diw-T5-4R4"/>
+                                    <constraint firstItem="Rib-b0-gfy" firstAttribute="centerY" secondItem="iZs-Fd-10V" secondAttribute="centerY" constant="20" id="Diw-T5-4R4"/>
                                     <constraint firstAttribute="trailing" secondItem="ErA-WH-0ot" secondAttribute="trailing" constant="10" id="JCC-Si-Wea"/>
+                                    <constraint firstAttribute="height" constant="450" id="TIS-hT-1gz"/>
                                     <constraint firstAttribute="trailing" secondItem="Rib-b0-gfy" secondAttribute="trailing" id="U2s-Jr-amY"/>
                                     <constraint firstItem="Rib-b0-gfy" firstAttribute="centerX" secondItem="iZs-Fd-10V" secondAttribute="centerX" id="Vfk-XV-Cs6"/>
                                     <constraint firstItem="Rib-b0-gfy" firstAttribute="leading" secondItem="iZs-Fd-10V" secondAttribute="leading" id="XIa-Gc-Th4"/>
@@ -740,10 +741,9 @@
                         <viewLayoutGuide key="safeArea" id="ApX-Aa-rmd"/>
                         <color key="backgroundColor" red="0.66011597938144329" green="0.66011597938144329" blue="0.66011597938144329" alpha="0.50297619047619047" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="iZs-Fd-10V" firstAttribute="centerY" secondItem="t5x-2s-A4o" secondAttribute="centerY" constant="-20" id="3ZZ-yc-SQP"/>
                             <constraint firstItem="iZs-Fd-10V" firstAttribute="leading" secondItem="ApX-Aa-rmd" secondAttribute="leading" constant="40" id="SZv-Qx-lk2"/>
                             <constraint firstItem="ApX-Aa-rmd" firstAttribute="trailing" secondItem="iZs-Fd-10V" secondAttribute="trailing" constant="40" id="UC2-Dg-Dhr"/>
-                            <constraint firstItem="iZs-Fd-10V" firstAttribute="top" secondItem="ApX-Aa-rmd" secondAttribute="top" constant="40" id="cHc-v0-3S3"/>
-                            <constraint firstItem="ApX-Aa-rmd" firstAttribute="bottom" secondItem="iZs-Fd-10V" secondAttribute="bottom" constant="40" id="ykC-hq-PEJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="55K-Fv-9nc"/>
@@ -831,7 +831,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Change user theme"/>
                                 <connections>
-                                    <segue destination="ehd-t3-aRA" kind="presentation" modalPresentationStyle="overCurrentContext" id="WHU-hx-9Sd"/>
+                                    <segue destination="ehd-t3-aRA" kind="presentation" identifier="selectThemeSegue" modalPresentationStyle="overCurrentContext" id="WHU-hx-9Sd"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaI-Lv-mLw">

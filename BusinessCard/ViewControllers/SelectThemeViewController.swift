@@ -10,6 +10,7 @@ import UIKit
 class SelectThemeViewController: UIViewController {
     
     private var color:String? = nil
+    public var callback:(()->())? = nil
 
     @IBAction func indigo(_ sender: UIButton) {
         color = "Indigo"
@@ -64,7 +65,15 @@ class SelectThemeViewController: UIViewController {
         print("Setting theme to \(String(describing: color))")
         let userDefaults = UserDefaults.standard
         userDefaults.set(color, forKey: "ThemeColour")
+            if let callback = self.callback {
+                print("select theme controller callback being called")
+                callback()
+            } else {
+                print("select theme controller callback is nil")
+            }
         dismiss(animated: true, completion: nil)
+
+        
     }
     
     override func viewDidLoad() {
