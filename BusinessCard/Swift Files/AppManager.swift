@@ -146,7 +146,7 @@ class AppManager {
             }
         }
         if let callback = callback {
-            callback(self.contactList)
+            callback(AppManager.shared.contactList)
         }
     }
     
@@ -157,7 +157,7 @@ class AppManager {
         if let loggedInUID = loggedInUID {
             
             AppManager.shared.contactList.append(for_uid)
-            AppManager.shared.db.collection("contactlist").document(loggedInUID).setData(["contacts": self.contactList])
+            AppManager.shared.db.collection("contactlist").document(loggedInUID).setData(["contacts": AppManager.shared.contactList])
             {
                 error in
                     
