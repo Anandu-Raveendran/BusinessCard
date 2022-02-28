@@ -31,6 +31,7 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5q0-gr-uof">
                         <rect key="frame" x="20" y="13" width="80" height="80"/>
+                        <color key="tintColor" systemColor="systemFillColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="TNv-hb-iYk"/>
                             <constraint firstAttribute="height" constant="80" id="ZGC-bW-VWF"/>
@@ -59,6 +60,9 @@
     <resources>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -65,7 +65,10 @@ class AppManager {
         
         docRef.getDocument{
         (document, error) in
-                       
+            if(error != nil){
+                print("Error getting user data firebase \(String(describing: error?.localizedDescription))")
+                return
+            }
             if let document = document, document.exists {
                 
                 let data = document.data()
@@ -125,13 +128,21 @@ class AppManager {
     
     func getContactsFirebase(for_uid:String, callback:(([String])->())?){
         print("getting contacts from firebase")
-        let docRef = db.collection("contactlist").document(for_uid)
+        let docRef = AppManager.shared.db.collection("contactlist").document(for_uid)
         docRef.getDocument{
             (document, error) in
+            
+            if(error != nil){
+                print("Error getting contacts firebase \(String(describing: error?.localizedDescription))")
+                return
+            }
             
             if let document = document, document.exists {
                 let data = document.data()
                 AppManager.shared.contactList = data?["contacts"] as! [String]
+                print("got \((data?["contacts"]as! [String]).count) contactlist from firebase")
+            } else {
+                print("Document doesnt exist is firebase reply")
             }
         }
         if let callback = callback {
