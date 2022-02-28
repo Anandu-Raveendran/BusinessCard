@@ -13,11 +13,11 @@
 		3F443C3427499B05008CC23B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F443C3327499B05008CC23B /* DataSource.swift */; };
 		3F82B21A274AB8A300BFFC4E /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82B219274AB8A300BFFC4E /* ChangePasswordViewController.swift */; };
 		3F82B21C274AC22400BFFC4E /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F82B21B274AC22400BFFC4E /* PasswordResetViewController.swift */; };
-		3F94AD16272CC03B00C89636 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F94AD15272CC03A00C89636 /* GoogleService-Info.plist */; };
 		3F971B6E2762C1740031051E /* ContactListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F971B6C2762C1740031051E /* ContactListTableViewCell.swift */; };
 		3F971B6F2762C1740031051E /* ContactListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F971B6D2762C1740031051E /* ContactListTableViewCell.xib */; };
 		3F994BB527AE192300ABD0AD /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F994BB427AE192300ABD0AD /* EditContactViewController.swift */; };
 		3F9E6ECD27CA99A0000B258A /* SelectThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9E6ECC27CA99A0000B258A /* SelectThemeViewController.swift */; };
+		3FB0E59127CD4B04009AEFBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FB0E59027CD4B04009AEFBE /* GoogleService-Info.plist */; };
 		5F40BCDBD79845B9ABEE809A /* Pods_BusinessCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */; };
 		F922C1D22726E89F00A39554 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922C1D12726E89F00A39554 /* ScannerViewController.swift */; };
 		F922C1D52727086700A39554 /* UserDataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F922C1D42727086700A39554 /* UserDataDao.swift */; };
@@ -42,11 +42,11 @@
 		3F443C3327499B05008CC23B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		3F82B219274AB8A300BFFC4E /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		3F82B21B274AC22400BFFC4E /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
-		3F94AD15272CC03A00C89636 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F971B6C2762C1740031051E /* ContactListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewCell.swift; sourceTree = "<group>"; };
 		3F971B6D2762C1740031051E /* ContactListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListTableViewCell.xib; sourceTree = "<group>"; };
 		3F994BB427AE192300ABD0AD /* EditContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
 		3F9E6ECC27CA99A0000B258A /* SelectThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectThemeViewController.swift; sourceTree = "<group>"; };
+		3FB0E59027CD4B04009AEFBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFFF18734AA1278C35B687CB /* Pods-BusinessCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCard.debug.xcconfig"; path = "Target Support Files/Pods-BusinessCard/Pods-BusinessCard.debug.xcconfig"; sourceTree = "<group>"; };
 		C2A0758BBAE2762C49C81B6E /* Pods_BusinessCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F922C1D12726E89F00A39554 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +128,7 @@
 		F92830DE2724A5650034B682 /* BusinessCard */ = {
 			isa = PBXGroup;
 			children = (
+				3FB0E59027CD4B04009AEFBE /* GoogleService-Info.plist */,
 				F92830DF2724A5650034B682 /* AppDelegate.swift */,
 				F92830E12724A5650034B682 /* SceneDelegate.swift */,
 				3F443C3027499412008CC23B /* Swift Files */,
@@ -137,7 +138,6 @@
 				F92830ED2724A5670034B682 /* LaunchScreen.storyboard */,
 				F92830F02724A5670034B682 /* Info.plist */,
 				F92830E82724A5650034B682 /* BusinessCard.xcdatamodeld */,
-				3F94AD15272CC03A00C89636 /* GoogleService-Info.plist */,
 			);
 			path = BusinessCard;
 			sourceTree = "<group>";
@@ -223,7 +223,7 @@
 			files = (
 				3F971B6F2762C1740031051E /* ContactListTableViewCell.xib in Resources */,
 				F92830EF2724A5670034B682 /* LaunchScreen.storyboard in Resources */,
-				3F94AD16272CC03B00C89636 /* GoogleService-Info.plist in Resources */,
+				3FB0E59127CD4B04009AEFBE /* GoogleService-Info.plist in Resources */,
 				F92830EC2724A5670034B682 /* Assets.xcassets in Resources */,
 				F92830E72724A5650034B682 /* Main.storyboard in Resources */,
 			);

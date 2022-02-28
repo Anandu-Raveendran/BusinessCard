@@ -121,7 +121,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="EGs-P2-SPp" kind="showDetail" identifier="guestSegue" id="FUD-MJ-aLo"/>
+                                    <segue destination="wFn-MB-5M7" kind="show" identifier="guestSegue" id="L1R-PQ-mdU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ko-g0-9th">
@@ -205,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tan-SQ-qIn">
-                                <rect key="frame" x="40" y="439.66666666666669" width="286" height="31"/>
+                                <rect key="frame" x="40" y="395.66666666666669" width="286" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Scan QR Code">
                                     <imageReference key="image" image="camera.metering.none" catalog="system" symbolScale="large" renderingMode="template"/>
@@ -215,37 +215,31 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRn-m6-5A4">
-                                <rect key="frame" x="40" y="237.99999999999997" width="295" height="101.66666666666666"/>
+                                <rect key="frame" x="40" y="194" width="295" height="101.66666666666669"/>
                                 <string key="text">Welcome to online business card. As a guest you can only scan a QR code and get the contact information. Register to create your business card now.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIP-Rb-OVh">
-                                <rect key="frame" x="40" y="520.66666666666663" width="295" height="31"/>
+                                <rect key="frame" x="40" y="476.66666666666669" width="295" height="28"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="Login"/>
+                                        <fragment content="Login / Register">
+                                            <attributes>
+                                                <font key="NSFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
                                     </attributedString>
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="0nT-rD-ze7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcG-Nv-6iW">
-                                <rect key="frame" x="40" y="571.66666666666663" width="295" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Register">
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="kbG-gM-EYW" kind="show" id="jTE-T8-JiY"/>
+                                    <action selector="loginBtn:" destination="wFn-MB-5M7" eventType="touchUpInside" id="CF9-Tt-s81"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guest Mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64M-3F-TpU">
-                                <rect key="frame" x="40" y="128" width="295" height="25.666666666666657"/>
+                                <rect key="frame" x="40" y="84" width="295" height="25.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -256,8 +250,6 @@
                         <constraints>
                             <constraint firstItem="mRn-m6-5A4" firstAttribute="top" secondItem="sg3-dI-mP0" secondAttribute="top" constant="150" id="3KS-es-9lW"/>
                             <constraint firstItem="tan-SQ-qIn" firstAttribute="leading" secondItem="sg3-dI-mP0" secondAttribute="leading" constant="40" id="6xz-a2-Ego"/>
-                            <constraint firstItem="sg3-dI-mP0" firstAttribute="trailing" secondItem="OcG-Nv-6iW" secondAttribute="trailing" constant="40" id="CvZ-de-WZJ"/>
-                            <constraint firstItem="OcG-Nv-6iW" firstAttribute="leading" secondItem="sg3-dI-mP0" secondAttribute="leading" constant="40" id="G8J-FJ-3WU"/>
                             <constraint firstItem="64M-3F-TpU" firstAttribute="leading" secondItem="sg3-dI-mP0" secondAttribute="leading" constant="40" id="Hbf-7y-i0M"/>
                             <constraint firstItem="IIP-Rb-OVh" firstAttribute="top" secondItem="tan-SQ-qIn" secondAttribute="bottom" constant="50" id="LaZ-4o-bn1"/>
                             <constraint firstItem="IIP-Rb-OVh" firstAttribute="leading" secondItem="sg3-dI-mP0" secondAttribute="leading" constant="40" id="Mta-d2-dqR"/>
@@ -268,14 +260,13 @@
                             <constraint firstItem="mRn-m6-5A4" firstAttribute="leading" secondItem="sg3-dI-mP0" secondAttribute="leading" constant="40" id="pcQ-lF-jwA"/>
                             <constraint firstItem="sg3-dI-mP0" firstAttribute="trailing" secondItem="mRn-m6-5A4" secondAttribute="trailing" constant="40" id="uPB-3B-CcJ"/>
                             <constraint firstItem="64M-3F-TpU" firstAttribute="top" secondItem="sg3-dI-mP0" secondAttribute="top" constant="40" id="vCw-W9-RGQ"/>
-                            <constraint firstItem="OcG-Nv-6iW" firstAttribute="top" secondItem="IIP-Rb-OVh" secondAttribute="bottom" constant="20" id="xQ1-cL-Ntd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LL0-Zp-DbP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2KJ-OE-GVW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1867" y="-10"/>
+            <point key="canvasLocation" x="2164" y="-4"/>
         </scene>
         <!--QR scanner-->
         <scene sceneID="WW4-pZ-jLl">
@@ -305,37 +296,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3zw-TO-ylM">
-                                <rect key="frame" x="60" y="128" width="255" height="255"/>
+                                <rect key="frame" x="60" y="84" width="255" height="255"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3zw-TO-ylM" secondAttribute="height" multiplier="1:1" id="7eR-d8-k6r"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqV-Da-RBb">
-                                <rect key="frame" x="60" y="403" width="255" height="21"/>
+                                <rect key="frame" x="60" y="359" width="255" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbz-UG-DHt">
-                                <rect key="frame" x="60" y="444" width="255" height="21"/>
+                                <rect key="frame" x="60" y="400" width="255" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm5-2g-KgK">
-                                <rect key="frame" x="60" y="485" width="255" height="21"/>
+                                <rect key="frame" x="60" y="441" width="255" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXc-yS-5AJ">
-                                <rect key="frame" x="60" y="526" width="255" height="21"/>
+                                <rect key="frame" x="60" y="482" width="255" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY6-sM-K3F">
-                                <rect key="frame" x="50" y="567" width="275" height="31"/>
+                                <rect key="frame" x="50" y="523" width="275" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="linkedIn"/>
                                 <connections>
@@ -343,7 +334,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0u-ps-zRb">
-                                <rect key="frame" x="50" y="618" width="265" height="31"/>
+                                <rect key="frame" x="50" y="574" width="265" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Company website"/>
                                 <connections>
@@ -1301,30 +1292,10 @@
             </objects>
             <point key="canvasLocation" x="1051" y="-662"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="56Z-GG-CWn">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EGs-P2-SPp" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BsJ-1z-kvz">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="wFn-MB-5M7" kind="relationship" relationship="rootViewController" id="CVb-a2-4mD"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ct-6s-S2d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1051" y="-10"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FUD-MJ-aLo"/>
-        <segue reference="MZ1-if-NQs"/>
         <segue reference="WHU-hx-9Sd"/>
-        <segue reference="EFo-JD-NyT"/>
+        <segue reference="yD2-fr-3lg"/>
         <segue reference="X7j-X9-bk8"/>
     </inferredMetricsTieBreakers>
     <resources>

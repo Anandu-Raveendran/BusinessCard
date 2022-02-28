@@ -11,6 +11,10 @@ class GuestViewController: UIViewController {
 
     var code:String! // code from qr code scanner is saved here
     
+    @IBAction func loginBtn(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(">>>> Guest ViewController")
