@@ -145,22 +145,23 @@ class AppManager {
         
         if let loggedInUID = loggedInUID {
             
-                
-                let docRef = db.collection("contactlist").document(loggedInUID)
-                docRef.getDocument{
-                    (document, error) in
+            AppManager.shared.contactList.append(for_uid)
+            AppManager.shared.db.collection("contactlist").document(loggedInUID).setData(["contacts": self.contactList])
+            {
+                error in
                     
-                    if let document = document, document.exists {
-                        let data = document.data()
-                        AppManager.shared.contactList = data?["contacts"] as! [String]
-                        self.contactList.append(for_uid)
-                        self.db.collection("contactlist").document(loggedInUID).setData(["contacts": self.contactList])
-                        if let callback = callback {
-                            callback()
-                        }
-                    }
+                if(error != nil){
+                    print("Error uploading contact \(String(describing: error?.localizedDescription))")
+                    return
                 }
-            }
+                print("uploading contact done calling callback")
+                if let callback = callback {
+                    callback()
+                }
+           }
+        } else {
+            print("Couldnt upload contact as user not logged in")
+        }
     }
     
     func openUrlInBrowser(for_url:String) {
