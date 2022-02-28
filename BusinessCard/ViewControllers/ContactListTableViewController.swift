@@ -21,6 +21,7 @@ class ContactListTableViewController: UIViewController, UISearchBarDelegate, UIT
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(">>>> ContactListTable ViewController")
 
         tableView.delegate = self
         searchBar.delegate = self
@@ -108,7 +109,7 @@ class ContactListTableViewController: UIViewController, UISearchBarDelegate, UIT
         print("Building cell \(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseidentifier", for: indexPath) as! ContactListTableViewCell
         cell.nameText.text = contacts[indexPath.row].name
-        cell.phone.text = String(contacts[indexPath.row].phone)
+        cell.phone.text = contacts[indexPath.row].phone
         if let data = contacts[indexPath.row].image{
             cell.dpImageView?.image = UIImage(data: data)
             print("Image is set for name \(contacts[indexPath.row].name)")

@@ -28,7 +28,7 @@ class EditContactViewController: UIViewController {
     @IBAction func SaveContactBtn(_ sender: UIButton) {
         contact?.name = name.text
         contact?.email = email.text
-        contact?.phone = Int64(phone.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0") ?? 0
+        contact?.phone = phone.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0"
         if let contact = contact, let sindex = selectedIndex{
             AppManager.shared.database.update(data:contact, index:sindex)
             self.navigationController?.popToRootViewController(animated: true)
@@ -42,6 +42,7 @@ class EditContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(">>>> Edit Contact ViewController")
 
         QRCodeImage.image = HomeViewController.generateQRCode(from: uid!)
         
@@ -75,7 +76,7 @@ class EditContactViewController: UIViewController {
             DpImage.image = UIImage(data:img)
         }
         name.text = contact.name
-        phone.text = String(contact.phone)
+        phone.text = contact.phone
         email.text = contact.email
         jobTitle.text = contact.job_title
         companyWebsite.text = contact.companyUrl

@@ -13,6 +13,7 @@ class GuestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(">>>> Guest ViewController")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

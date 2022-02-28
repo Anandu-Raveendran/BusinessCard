@@ -78,6 +78,7 @@ class SelectThemeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(">>>> Select theme ViewController")
 
         // Do any additional setup after loading the view.
     }

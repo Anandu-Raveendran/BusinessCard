@@ -38,6 +38,8 @@ class SettingsViewController: UIViewController {
         
         if(!RegisterViewController.isEmailValid(email)){
             errorMessage += " Email ID not valid"
+            errorField.text = errorMessage
+            return
         }
         
         guard let name = nameField.text else {
@@ -46,7 +48,12 @@ class SettingsViewController: UIViewController {
             return
         }
         
-        let phone = Int(phoneNumberField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0")
+        let phone = phoneNumberField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0"
+        if(!RegisterViewController.isPhoneValid(phone)){
+            errorMessage += " Phone number is not Valid"
+            errorField.text = errorMessage
+            return
+        }
         let linkedIn = linkedInUrl.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let company_website = companyUrlField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let jobTitle = jobTitleField.text ?? ""
@@ -67,10 +74,10 @@ class SettingsViewController: UIViewController {
             self.uploadImage()
                 
             AppManager.shared.db.collection("users").document(AppManager.shared.loggedInUID!).setData([
-                    "name":name, "phone":phone!,
+                    "name":name, "phone":phone,
                     "linkedIn":linkedIn,
                     "company_website":company_website,
-                    "job_title": jobTitle                ])
+                    "job_title": jobTitle])
                 {
                     error in
                     
@@ -78,6 +85,15 @@ class SettingsViewController: UIViewController {
                         print("User data create error \(String(describing: error?.localizedDescription))")
                     }
                 }
+
+            var localUserData:UserDataDao? = nil
+            localUserData?.name = name
+            localUserData?.phone = phone
+            localUserData?.linkedIn = linkedIn
+            localUserData?.company_website = company_website
+            localUserData?.job_title = jobTitle
+            RegisterViewController.updateLocalData(userData: localUserData)
+            
 //            if let callback = callback {
 //                callback()
 //            }
@@ -96,6 +112,10 @@ class SettingsViewController: UIViewController {
 
         print("Logout from settings")
         AppManager.shared.logout()
+        if let callback = imgUploadCallback {
+            callback()
+        }
+    
         self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
 
@@ -107,13 +127,18 @@ class SettingsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        print(">>>> Settings ViewController")
         emailIDTextField.text = FirebaseAuth.Auth.auth().currentUser?.email
-        nameField.text = AppManager.shared.userData?.name
-        phoneNumberField.text = String(AppManager.shared.userData!.phone)
-        linkedInUrl.text = AppManager.shared.userData?.linkedIn
-        companyUrlField.text = AppManager.shared.userData?.company_website
-        jobTitleField.text = AppManager.shared.userData?.job_title
+        if let userData = AppManager.shared.userData{
+            nameField.text = userData.name
+            phoneNumberField.text = userData.phone
+            linkedInUrl.text = userData.linkedIn
+            companyUrlField.text = userData.company_website
+            jobTitleField.text = userData.job_title
+        }
+        
         dpImageView.image = AppManager.shared.dpImage
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

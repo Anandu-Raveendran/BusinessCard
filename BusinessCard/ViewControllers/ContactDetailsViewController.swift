@@ -62,7 +62,8 @@ class ContactDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        print(">>>> ContactDetails ViewController")
 
         print("Called from is \(calledFrom)")
         

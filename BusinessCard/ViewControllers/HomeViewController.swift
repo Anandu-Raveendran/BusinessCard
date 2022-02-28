@@ -34,6 +34,9 @@ class HomeViewController: UIViewController {
         present(alertView, animated: true, completion: nil)
     }
     
+    func themeUpdateCallback(){
+        HomeViewController.updateThemeColor(view: self.view)
+    }
     public static func updateThemeColor(view:UIView) -> Bool {
         let userDefaults = UserDefaults.standard
         let colorStr = userDefaults.object(forKey: "ThemeColour") as? String
@@ -61,9 +64,30 @@ class HomeViewController: UIViewController {
         return false
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("View did Appear in Home")
+    override func viewDidLoad() {
+        print(">>>> Home ViewController viewDidLoad")
+        getLocalyCachedUserData()
+    }
+    fileprivate func getLocalyCachedUserData() {
         
+        if let data = UserDefaults.standard.data(forKey: "UserData"){
+            do{
+                let decoder = JSONDecoder()
+                let localUserData = try decoder.decode(UserDataDao.self, from: data)
+                print("Got local user data")
+                getUserDataCallback(contact: localUserData) // update ui
+                
+            } catch {
+                print("Error getting local user data")
+            }
+            
+        }
+            
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print(">>>> Home ViewController viewDidAppear")
+
         let monitor = NWPathMonitor()
         
         monitor.pathUpdateHandler = { Path in
@@ -84,7 +108,8 @@ class HomeViewController: UIViewController {
         
         if let uid = AppManager.shared.loggedInUID { // set the logged ßin used uid as the QR code data
             QRCodeImageView.image = HomeViewController.generateQRCode(from: uid)
-            
+            DPimage.image = AppManager.shared.dpImage
+            print("Home viewDidAppear setting dpImage")
             AppManager.shared.getUserDataFireBase(for: uid, callback: getUserDataCallback)
             AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
         }
@@ -95,23 +120,17 @@ class HomeViewController: UIViewController {
     
     func gotImageCallback(imageData:Data?){
         if let imageData = imageData {
+            print("Home gotImageCallback setting dpimage")
             self.DPimage.image = UIImage(data:imageData)
             AppManager.shared.dpImage = UIImage(data:imageData)
         }
     }
     
     func getUserDataCallback(contact:UserDataDao){
-        
-        
-        AppManager.shared.userData?.name = contact.name
-        AppManager.shared.userData?.phone = contact.phone
-        AppManager.shared.userData?.job_title = contact.job_title
-        AppManager.shared.userData?.company_website = contact.company_website
-        AppManager.shared.userData?.linkedIn = contact.linkedIn
-        
-        
         print("retrieved dict for \(String(describing: AppManager.shared.userData?.name))")
-        self.name.text = AppManager.shared.userData?.name
+        RegisterViewController.updateLocalData(userData: contact)
+
+        self.name.text = contact.name
         if let emailID = FirebaseAuth.Auth.auth().currentUser?.email {
             self.email.text = emailID
         } else {
@@ -143,6 +162,9 @@ class HomeViewController: UIViewController {
             let dest = segue.destination as! SettingsViewController
             dest.callback = dataUpdateDone
             dest.imgUploadCallback = imgUploadCallback
+        } else if(segue.identifier == "selectThemeSegue"){
+            let dest = segue.destination as! SelectThemeViewController
+            dest.callback = themeUpdateCallback
         }
     }
     func QRCodeScannerCallback(code:String){
@@ -156,9 +178,8 @@ class HomeViewController: UIViewController {
     }
     func imgUploadCallback(){
         print("imageUpdateDone called")
-        if let uid = AppManager.shared.loggedInUID {
-            DPimage.image = AppManager.shared.dpImage
-        }
+        DPimage.image = AppManager.shared.dpImage
+        print("Home imgUploadCallback setting dpImage")
     }
 
 }

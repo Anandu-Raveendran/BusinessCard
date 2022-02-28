@@ -16,6 +16,8 @@ class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(">>>> Change Password ViewController")
+
 
         // Do any additional setup after loading the view.
     }

@@ -46,6 +46,12 @@ class AppManager {
         // caller.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         do {
             try Auth.auth().signOut()
+            //reset everything. When user logs out and then new user logs in reset everything
+            AppManager.shared.dpImage = nil
+            AppManager.shared.contactList = []
+            AppManager.shared.userData = nil
+            AppManager.shared.loggedInUID = nil
+
             print("Sign out is successful")
         } catch {
             print("sign out error")
@@ -64,9 +70,9 @@ class AppManager {
                 
                 let data = document.data()
                 
-                let contact = UserDataDao()
+                var contact = UserDataDao()
                 contact.name = data?["name"] as? String ?? ""
-                contact.phone = data?["phone"] as? Int64 ?? 0
+                contact.phone = data?["phone"] as? String ?? ""
                 contact.job_title = data?["job_title"] as? String ?? ""
                 contact.company_website = data?["company_website"] as? String ?? ""
                 contact.linkedIn = data?["linkedIn"] as? String ?? ""

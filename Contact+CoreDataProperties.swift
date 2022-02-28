@@ -2,7 +2,7 @@
 //  Contact+CoreDataProperties.swift
 //  
 //
-//  Created by Anandu on 2021-11-20.
+//  Created by Anandu on 2022-02-27.
 //
 //
 
@@ -18,11 +18,11 @@ extension Contact {
 
     @NSManaged public var companyUrl: String?
     @NSManaged public var email: String?
+    @NSManaged public var image: Data?
     @NSManaged public var job_title: String?
     @NSManaged public var linkedInUrl: String?
     @NSManaged public var name: String?
-    @NSManaged public var phone: Int64
+    @NSManaged public var phone: String?
     @NSManaged public var uid: String?
-    @NSManaged public var image: Data?
 
 }

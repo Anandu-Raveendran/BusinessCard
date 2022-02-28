@@ -37,7 +37,7 @@ class DataSource {
         return saveContact(uid: userDataDao.uid, name: userDataDao.name, phone: userDataDao.phone, email: userDataDao.email, companyUrl: userDataDao.company_website, linkedIn: userDataDao.linkedIn, job_title: userDataDao.job_title, image: image)
     }
     
-    func saveContact(uid:String, name:String, phone:Int64, email:String, companyUrl:String, linkedIn:String, job_title:String, image:Data?)->Bool{
+    func saveContact(uid:String, name:String, phone:String, email:String, companyUrl:String, linkedIn:String, job_title:String, image:Data?)->Bool{
         
         //check if already exists in contactlist
         contacts?.forEach{ ele in

@@ -40,6 +40,7 @@ class PasswordResetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(">>>> Password Reset ViewController")
 
         // Do any additional setup after loading the view.
     }

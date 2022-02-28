@@ -38,6 +38,24 @@ class RegisterViewController: UIViewController {
     }
     
     
+    public static func updateLocalData(userData:UserDataDao?) {
+        
+        do{
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(userData)
+            UserDefaults.standard.set(data, forKey: "UserData")
+            print("Encoding userdata for user ")
+        } catch{
+            print("encoding issue for userdata")
+        }
+        AppManager.shared.userData = UserDataDao()
+        AppManager.shared.userData?.name = userData?.name ?? ""
+        AppManager.shared.userData?.phone = userData?.phone ?? ""
+        AppManager.shared.userData?.job_title = userData?.job_title ?? ""
+        AppManager.shared.userData?.company_website = userData?.company_website ?? ""
+        AppManager.shared.userData?.linkedIn = userData?.linkedIn ?? ""
+    }
+    
     @IBAction func submitBtn(_ sender: Any) {
         
         var errorMessage = ""
@@ -68,8 +86,8 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        let phoneStr = phoneNumberField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0"
-        if(!RegisterViewController.isPhoneValid(phoneStr)){
+        let phone = phoneNumberField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0"
+        if(!RegisterViewController.isPhoneValid(phone)){
             errorMessage += " Phone number is not valid"
             errorField.text = errorMessage
             print(errorMessage)
@@ -78,11 +96,16 @@ class RegisterViewController: UIViewController {
             print("Phone number is valid")
         }
         
-        let phone = Int(phoneStr)
-                
         let linkedIn = linkedInUrl.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let company_website = companyUrlField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        let jobTitle = jobTitleField.text ?? ""
+        let jobTitle = jobTitleField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+
+        var localUserData:UserDataDao? = nil
+        localUserData?.name = name
+        localUserData?.phone = phone
+        localUserData?.linkedIn = linkedIn
+        localUserData?.company_website = company_website
+        localUserData?.job_title = jobTitle
         
         if(errorMessage.isEmpty || errorMessage == "") {
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: pass, completion: {
@@ -100,10 +123,14 @@ class RegisterViewController: UIViewController {
                 strongSelf.errorField.text = "Account created"
                 AppManager.shared.loggedInUID = result?.user.uid
                 AppManager.shared.db = Firestore.firestore()
+                
+                RegisterViewController.updateLocalData(userData: localUserData)
+                AppManager.shared.dpImage = self?.image
+                
                 self?.uploadImage()
                 
                 AppManager.shared.db.collection("users").document(result!.user.uid).setData([
-                    "name":name, "phone":phone!,
+                    "name":name, "phone":phone,
                     "linkedIn":linkedIn,
                     "company_website":company_website,
                     "job_title": jobTitle,
@@ -197,6 +224,8 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        print(">>>> Register ViewController")
+
         self.hideKeyboardWhenTappedAround()
     }
     
