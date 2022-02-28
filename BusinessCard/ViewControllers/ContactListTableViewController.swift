@@ -115,6 +115,7 @@ class ContactListTableViewController: UIViewController, UISearchBarDelegate, UIT
             print("Image is set for name \(contacts[indexPath.row].name)")
         } else {
             print("Img data is null")
+            cell.dpImageView?.image = UIImage(systemName: "person.crop.square")
         }
        
         

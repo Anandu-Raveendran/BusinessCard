@@ -88,6 +88,8 @@ class ContactDetailsViewController: UIViewController {
     func gotImageCallback(imageData:Data?){
         if let imageData = imageData {
             self.profilePic.image = UIImage(data:imageData)
+        } else {
+            self.profilePic.image = UIImage(systemName: "person.crop.square")
         }
     }
 

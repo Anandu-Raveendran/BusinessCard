@@ -58,6 +58,8 @@ class EditContactViewController: UIViewController {
     func gotImageCallback(imageData:Data?){
         if let imageData = imageData {
             self.DpImage.image = UIImage(data:imageData)
+        } else{
+            self.DpImage.image = UIImage(systemName: "person.crop.square")
         }
     }
     

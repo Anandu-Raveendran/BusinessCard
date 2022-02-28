@@ -1191,8 +1191,8 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="s5E-4p-gz2">
-                                <rect key="frame" x="137.66666666666666" y="142" width="100" height="96.666666666666671"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="s5E-4p-gz2">
+                                <rect key="frame" x="137.66666666666666" y="141.66666666666666" width="100" height="97"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="1js-f8-VyD"/>
                                     <constraint firstAttribute="height" constant="100" id="l0P-bB-jP0"/>
@@ -1303,6 +1303,7 @@
         <image name="QRimage" width="128" height="128"/>
         <image name="camera.metering.none" catalog="system" width="128" height="93"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="person.crop.square" catalog="system" width="128" height="114"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

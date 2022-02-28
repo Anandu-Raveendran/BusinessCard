@@ -123,7 +123,7 @@ class SettingsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        HomeViewController.updateThemeColor(view: themePreview)
+        _=HomeViewController.updateThemeColor(view: themePreview)
     }
     
     override func viewDidLoad() {
@@ -136,8 +136,11 @@ class SettingsViewController: UIViewController {
             companyUrlField.text = userData.company_website
             jobTitleField.text = userData.job_title
         }
-        
-        dpImageView.image = AppManager.shared.dpImage
+        if(AppManager.shared.dpImage == nil){
+            dpImageView.image = UIImage(systemName: "person.crop.square")
+        } else {
+            dpImageView.image = AppManager.shared.dpImage
+        }
 
     }
     
