@@ -51,7 +51,7 @@ class AppManager {
             AppManager.shared.contactList = []
             AppManager.shared.userData = nil
             AppManager.shared.loggedInUID = nil
-
+            _ = AppManager.shared.database.deleteAll()
             print("Sign out is successful")
         } catch {
             print("sign out error")

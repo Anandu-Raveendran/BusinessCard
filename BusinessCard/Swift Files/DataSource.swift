@@ -69,11 +69,29 @@ class DataSource {
             return false
         }
     }
-    
+    func deleteAll(){
+        print("Deleting all coreData")
+        if var contacts = contacts {
+            for data:Contact in contacts{
+                do{
+                    context?.delete(data)
+                    try context?.save()
+                    print("Delete success")
+                }catch{
+                    print("Error while Delete data")
+                    return
+                }
+            }
+            contacts.removeAll()
+        }
+    }
+
     func delete(data:Contact, index:Int) -> Bool{
-        contacts?.remove(at: index)
-        context?.delete(data)
+        if((contacts?.contains(data)) != nil){
+            contacts?.remove(at: index)
+        }
         do{
+            context?.delete(data)
             try context?.save()
             print("Delete success")
             return true
@@ -84,11 +102,11 @@ class DataSource {
     }
     func update(data:Contact, uid:String){
         if let index = contacts?.firstIndex(where: {$0.uid == uid}){
-            update(data: data, index: index)
+            _ = update(data: data, index: index)
         }
     }
     func update(data:Contact, index:Int) -> Bool{
-        print("Update contact at index \(index) contact size \(contacts?.count)")
+        print("Update contact at index \(index) contact size \(String(describing: contacts?.count))")
         contacts?[index] = data
         do{
             try context?.save()
