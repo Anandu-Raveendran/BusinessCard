@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
     }
     
     func themeUpdateCallback(){
-        HomeViewController.updateThemeColor(view: self.view)
+        _=HomeViewController.updateThemeColor(view: self.view)
     }
     public static func updateThemeColor(view:UIView) -> Bool {
         let userDefaults = UserDefaults.standard

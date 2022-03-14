@@ -51,7 +51,7 @@ class AppManager {
             AppManager.shared.contactList = []
             AppManager.shared.userData = nil
             AppManager.shared.loggedInUID = nil
-            _ = AppManager.shared.database.deleteAll()
+            AppManager.shared.database.deleteAll()
             print("Sign out is successful")
         } catch {
             print("sign out error")
@@ -152,7 +152,7 @@ class AppManager {
     
     func addContactFirebase(for_uid:String, callback:(()->())?){
         
-        print("Add to firebase \(for_uid) to contact list of \(AppManager.shared.loggedInUID) ")
+        print("Add to firebase \(for_uid) to contact list of \(String(describing: AppManager.shared.loggedInUID)) ")
         
         if let loggedInUID = loggedInUID {
             

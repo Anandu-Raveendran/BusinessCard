@@ -30,13 +30,13 @@ class EditContactViewController: UIViewController {
         contact?.email = email.text
         contact?.phone = phone.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "0"
         if let contact = contact, let sindex = selectedIndex{
-            AppManager.shared.database.update(data:contact, index:sindex)
+            _=AppManager.shared.database.update(data:contact, index:sindex)
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
     
     @IBAction func DeleteContactBtn(_ sender: UIButton) {
-       AppManager.shared.database.delete(data: contact!, index: selectedIndex!)
+       _=AppManager.shared.database.delete(data: contact!, index: selectedIndex!)
        self.navigationController?.popToRootViewController(animated: true)
     }
     

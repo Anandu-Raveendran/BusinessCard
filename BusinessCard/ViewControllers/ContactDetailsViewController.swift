@@ -48,7 +48,7 @@ class ContactDetailsViewController: UIViewController {
         AppManager.shared.getContactsFirebase(for_uid: AppManager.shared.loggedInUID!, callback: nil)
         AppManager.shared.addContactFirebase(for_uid: uid!, callback: nil)
         if let data = userDetails{
-            AppManager.shared.database.saveContact(uid: data.uid,
+            _=AppManager.shared.database.saveContact(uid: data.uid,
                                                    name: data.name ,		
                                                    phone: data.phone,
                                                    email: data.email,
@@ -65,7 +65,7 @@ class ContactDetailsViewController: UIViewController {
 
         print(">>>> ContactDetails ViewController")
 
-        print("Called from is \(calledFrom)")
+        print("Called from is \(String(describing: calledFrom))")
         
         if let calledFrom = calledFrom {
             if(calledFrom == "GuestViewController"){

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="70v-Bx-Gh9">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -147,11 +147,19 @@
                                     <segue destination="AOb-ET-7KZ" kind="show" id="X7j-X9-bk8"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kaping_logo" translatesAutoresizingMaskIntoConstraints="NO" id="6nB-91-uv4">
+                                <rect key="frame" x="112.66666666666669" y="209" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="QFP-Y3-DDI"/>
+                                    <constraint firstAttribute="height" constant="150" id="hbV-65-GFu"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7lK-O3-QPZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2mi-iq-TAF"/>
+                            <constraint firstItem="6nB-91-uv4" firstAttribute="top" secondItem="XAq-6X-KVs" secondAttribute="bottom" constant="40" id="45M-Z9-7I1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Ko-g0-9th" secondAttribute="trailing" constant="10" id="5i7-3L-PFO"/>
                             <constraint firstItem="7lK-O3-QPZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8UQ-4l-aSE"/>
                             <constraint firstItem="A8C-YP-bm5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Aum-7s-AZQ"/>
@@ -167,8 +175,9 @@
                             <constraint firstItem="yXr-P4-knV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="UJE-Vq-Kyj"/>
                             <constraint firstItem="ETp-TL-RSm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YhJ-ke-dUT"/>
                             <constraint firstItem="7Ko-g0-9th" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bDt-kW-Ens"/>
-                            <constraint firstItem="7lK-O3-QPZ" firstAttribute="top" secondItem="XAq-6X-KVs" secondAttribute="bottom" constant="220" id="dsn-tA-qoM"/>
+                            <constraint firstItem="7lK-O3-QPZ" firstAttribute="top" secondItem="6nB-91-uv4" secondAttribute="bottom" constant="30" id="dsn-tA-qoM"/>
                             <constraint firstItem="ETp-TL-RSm" firstAttribute="top" secondItem="3dU-lT-sJm" secondAttribute="bottom" constant="20" id="g1w-bf-1f5"/>
+                            <constraint firstItem="6nB-91-uv4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gpS-Qn-dde"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7lK-O3-QPZ" secondAttribute="trailing" constant="50" id="l0u-fz-JgS"/>
                             <constraint firstItem="7Ko-g0-9th" firstAttribute="top" secondItem="ETp-TL-RSm" secondAttribute="bottom" constant="30" id="mgu-wk-0qU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A8C-YP-bm5" secondAttribute="trailing" constant="10" id="oPr-kX-ERU"/>
@@ -820,7 +829,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CN-Oe-xIx">
-                                <rect key="frame" x="30" y="656" width="150.33333333333334" height="31"/>
+                                <rect key="frame" x="30" y="656" width="150.66666666666666" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Change user theme"/>
                                 <connections>
@@ -1105,7 +1114,7 @@
                     <navigationItem key="navigationItem" id="bqx-Gl-g85">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="U78-xC-MXK">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mgb-IZ-1O6">
-                                <rect key="frame" x="276" y="5" width="83" height="34.333333333333336"/>
+                                <rect key="frame" x="276" y="4.6666666666666679" width="83" height="34.666666666666657"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
@@ -1306,6 +1315,7 @@
         <image name="QRimage" width="128" height="128"/>
         <image name="camera.metering.none" catalog="system" width="128" height="93"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="kaping_logo" width="500" height="500"/>
         <image name="person.crop.square" catalog="system" width="128" height="114"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="labelColor">
