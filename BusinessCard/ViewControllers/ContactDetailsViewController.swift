@@ -80,7 +80,7 @@ class ContactDetailsViewController: UIViewController {
                 return
             }
             AppManager.shared.getUserDataFireBase(for: code, callback: getUserDataCallback)
-            AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
+            AppManager.shared.getImageFirebase(for_uid: code, callback: gotImageCallback)
         
         self.hideKeyboardWhenTappedAround()
     }

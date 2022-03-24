@@ -18,6 +18,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         super.viewDidLoad()
         print(">>>> Scanner ViewController")
 
+
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
 
@@ -66,6 +67,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+#if targetEnvironment(simulator)
+        print("Simulator detected")
+        found(code: "TIo5p7aC6RN42GysdIzgAQ77T0v1")
+        return
+#else
+        print("Not a simulator")
+#endif
         
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
@@ -98,7 +106,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         print("QR code found for : \(code)")
         self.code = code
         if let callback = callback{
-         callback(code)
+            print("calling callback")
+            callback(code)
         } else {
             print("Error: No callback present")
         }
@@ -106,6 +115,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepare called")
         if(segue.identifier == "scannerToDetails"){
             let dest = segue.destination as! ContactDetailsViewController
             dest.uid = code

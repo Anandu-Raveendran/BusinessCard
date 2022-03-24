@@ -31,6 +31,10 @@ class ContactListTableViewController: UIViewController, UISearchBarDelegate, UIT
         tableView.register( nib, forCellReuseIdentifier: "reuseidentifier")
         
         contacts = AppManager.shared.database.fetchContacts(filter: "") ?? [Contact]()
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         if contacts.isEmpty {
             //No contacts in local db hence fetch from firebase
             print("Local Db is empty")

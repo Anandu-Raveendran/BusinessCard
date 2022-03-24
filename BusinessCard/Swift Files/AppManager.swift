@@ -59,7 +59,7 @@ class AppManager {
     }
     
     func getUserDataFireBase(for uid:String, callback:((UserDataDao)->())?){
-        if loggedInUID != nil {
+        print("firebase getting user data")
             
         let docRef = AppManager.shared.db.collection("users").document(uid)
         
@@ -90,7 +90,6 @@ class AppManager {
             } else {
                 print("Document does not exit for uid \(uid)")
             }
-        }
         }
     }
     

@@ -26,9 +26,23 @@ class GuestViewController: UIViewController {
             dest.callback = QRCodeScannerCallback
             dest.calledFrom = "GuestViewController"
         }
+#if targetEnvironment(simulator)
+         if(segue.identifier == "GuestToDetails"){ // debugging
+            let dest = segue.destination as! ContactDetailsViewController
+            dest.uid = "TIo5p7aC6RN42GysdIzgAQ77T0v1"
+            dest.calledFrom = "GuestViewController"
+        }
+#endif
     }
 
+#if targetEnvironment(simulator)
+    override func viewDidAppear(_ animated: Bool) {
+        performSegue(withIdentifier: "GuestToDetails", sender: nil)
+    }
+#endif
+    
     func QRCodeScannerCallback(code:String){
+        print("GuestViewController callback called")
         self.code = code;
     }
     
