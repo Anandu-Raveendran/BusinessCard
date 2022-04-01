@@ -65,6 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         print(">>>> Home ViewController viewDidLoad")
         getLocalyCachedUserData()
     }
@@ -84,10 +85,17 @@ class HomeViewController: UIViewController {
         }
             
     }
-    
+ 
     override func viewDidAppear(_ animated: Bool) {
         print(">>>> Home ViewController viewDidAppear")
+        super.viewDidAppear(animated)
 
+        self.QRCodeImageView.image = nil
+        if let uid = Auth.auth().currentUser?.uid {
+            print("Setting QR code in main thread")
+            QRCodeImageView.image =  AppManager.shared.generateQRCode(from: uid)
+        }
+        
         let monitor = NWPathMonitor()
         
         monitor.pathUpdateHandler = { Path in
@@ -106,14 +114,7 @@ class HomeViewController: UIViewController {
         monitor.start(queue: queue)
         
         
-        if let uid = AppManager.shared.loggedInUID { // set the logged ßin used uid as the QR code data
-            QRCodeImageView.image = HomeViewController.generateQRCode(from: uid)
-            if(AppManager.shared.dpImage == nil){
-                DPimage.image = UIImage(systemName: "person.crop.square")
-            } else {
-                DPimage.image = AppManager.shared.dpImage
-            }
-            print("Home viewDidAppear setting dpImage")
+        if let uid = Auth.auth().currentUser?.uid { // set the logged ßin used uid as the QR code data
             AppManager.shared.getUserDataFireBase(for: uid, callback: getUserDataCallback)
             AppManager.shared.getImageFirebase(for_uid:AppManager.shared.loggedInUID!, callback: gotImageCallback)
         }
@@ -133,9 +134,16 @@ class HomeViewController: UIViewController {
     }
     
     func getUserDataCallback(contact:UserDataDao){
-        print("retrieved dict for \(String(describing: AppManager.shared.userData?.name))")
+        print("retrieved dict for \(String(describing: contact.name))")
         RegisterViewController.updateLocalData(userData: contact)
-
+        
+        if(AppManager.shared.dpImage == nil){
+            DPimage.image = UIImage(systemName: "person.crop.square")
+        } else {
+            DPimage.image = AppManager.shared.dpImage
+        }
+        print("Home viewDidAppear setting dpImage")
+        
         self.name.text = contact.name
         if let emailID = FirebaseAuth.Auth.auth().currentUser?.email {
             self.email.text = emailID
@@ -145,19 +153,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    public static func generateQRCode(from string: String) -> UIImage? {
-        let data = string.data(using: String.Encoding.ascii)
-        if let QRFilter = CIFilter(name: "CIQRCodeGenerator") {
-            QRFilter.setValue(data, forKey: "inputMessage")
-            guard let QRImage = QRFilter.outputImage else {return nil}
-            
-            let transformScale = CGAffineTransform(scaleX: 5.0, y: 5.0)
-            let scaledQRImage = QRImage.transformed(by: transformScale)
-            
-            return UIImage(ciImage: scaledQRImage)
-        }
-        return nil
-    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toScanner"){

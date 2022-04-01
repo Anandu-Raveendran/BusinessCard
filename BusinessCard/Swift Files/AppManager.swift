@@ -9,6 +9,8 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import CoreData
+import CoreImage.CIFilterBuiltins
+import QRCode
 
 class AppManager {
     
@@ -194,6 +196,15 @@ class AppManager {
         } else {
             UIApplication.shared.openURL(mainUrl)
         }
+        
+    }
+    func generateQRCode(from url: String) -> UIImage? {
+        
+        print("generating QR code for \(url)")
+        
+        let url = URL(string: url)!
+        let qrCode = QRCode(url)
+        return qrCode?.image
         
     }
 }

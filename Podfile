@@ -12,4 +12,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Analytics'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
+
+pod 'QRCode'
+
 end

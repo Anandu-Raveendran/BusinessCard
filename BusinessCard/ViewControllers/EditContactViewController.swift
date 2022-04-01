@@ -44,7 +44,7 @@ class EditContactViewController: UIViewController {
         super.viewDidLoad()
         print(">>>> Edit Contact ViewController")
 
-        QRCodeImage.image = HomeViewController.generateQRCode(from: uid!)
+        QRCodeImage.image = AppManager.shared.generateQRCode(from: uid!)
         
         contact = AppManager.shared.database.fetchContact(uid: uid!)
         if let contact = contact{
