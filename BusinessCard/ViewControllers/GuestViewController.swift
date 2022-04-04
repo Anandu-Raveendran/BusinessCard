@@ -37,7 +37,7 @@ class GuestViewController: UIViewController {
 
 #if targetEnvironment(simulator)
     override func viewDidAppear(_ animated: Bool) {
-        performSegue(withIdentifier: "GuestToDetails", sender: nil)
+       // performSegue(withIdentifier: "GuestToDetails", sender: nil)
     }
 #endif
     

@@ -176,6 +176,28 @@ class AppManager {
         }
     }
     
+    func deleteAccountFirebase(for_uid:String, callback:((_ status:Bool)->())?){
+        
+        let user = Auth.auth().currentUser
+        
+        user?.delete { error in
+          if let error = error {
+              if let callback = callback {
+                  callback(false)
+              }
+            // An error happened.
+          } else {
+            // Account deleted.
+              if let callback = callback {
+                  callback(true)
+              }
+          }
+        }
+        
+        
+        return
+    }
+    
     func openUrlInBrowser(for_url:String) {
         var mainUrl:URL!
         

@@ -27,6 +27,19 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var themePreview: UIView!
     
+    @IBAction func DeleteAccountBtn(_ sender: UIButton) {
+        if let uid = AppManager.shared.loggedInUID {
+            AppManager.shared.deleteAccountFirebase(for_uid: uid, callback: accountDeleted)
+        } else {
+            AppManager.shared.logout()
+        }
+    }
+    
+    func accountDeleted(status: Bool){
+        print("Account delete: \(status)")
+        AppManager.shared.logout()
+    }
+    
     @IBAction func saveBtn(_ sender: Any) {
         var errorMessage = ""
         
